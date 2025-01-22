@@ -50,7 +50,7 @@ addLayer("s", {
             cost: new Decimal (100),
             unlocked() {return (hasUpgrade(this.layer, 12))},
             effect() {
-                let ret = player[points].points.add(1).pow(0.25)
+                let ret = player["points"].points.add(1).pow(0.25)
                 if (ret.gte("1e30")) ret = ret.pow(1/3).times("1e20")
             }
         },
