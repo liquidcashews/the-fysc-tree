@@ -81,7 +81,7 @@ addLayer("h", {
     }
 },
     requires: new Decimal (5000),
-    baseResource: (player["s"]),
+    baseResource: ("s"),
     type: "normal",
 },
     
