@@ -53,25 +53,21 @@ addLayer("s", {
         },
         13: {
             title: "Just Self-Synergy",
-            description: "Boost FP based on FP. (x^0.25)",
+            description: "Boost FP based on FP. (x^0.35)",
             cost: new Decimal (100),
             unlocked() {return (hasUpgrade(this.layer, 12))},
             effect() {
-                let ret = player.points.add(1).pow(0.25)
+                let ret = player.points.add(1).pow(0.35)
                 if (ret.gte("1e30")) ret = ret.pow(1/3).times("1e20")
                 return ret
-            }
+            },
+            effectDisplay () {return format (this.effect())+"x"}
         },
         21: {
             title: "Master the power of Lcedit",
-            description: "Nice features, also you added fires! Raise Subscribers Mult to the 1.1 (Softcap at 1e200 Subs), also unlock a new layer :O",
-            cost: new Decimal (420),
+            description: "Nice features, also you added fires! Raise Subscribers to the 1.2, also unlock a new layer :O",
+            cost: new Decimal (250),
             unlocked () {return (hasUpgrade(this.layer, 13))},
-            effect() {
-                let ret = player.points.add(1).pow(0.05)
-                if (ret.gte("1e20")) ret = ret.pow(0.2).times("1e16")
-                return ret;
-            },
         },
     },
 },
