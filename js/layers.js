@@ -1,6 +1,6 @@
-addLayer("p", {
-    name: "prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
+addLayer("s", {
+    name: "subscribers", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "S", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
@@ -15,6 +15,7 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -24,5 +25,18 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    upgrades: {
+        11: {
+            title: "Get a bad stream hoster",
+            description: "It can't run a chrome tab, but it can run OBS. x2 subs and x2.5 FP.",
+            cost: new Decimal(2),
+        },
+        12: {
+            title: "Create a forum in the FYSC Discord",
+            description: "Boost Fysc Players based on subs. (x^0.55, does nothing for now)",
+            cost: new Decimal(10),
+            unlocked() { return (hasUpgrade(this.layer, 11))},
+        }
+    },
+    layerShown(){return true},
 })
