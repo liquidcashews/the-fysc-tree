@@ -23,10 +23,6 @@ addLayer("s", {
         if (hasUpgrade(this.layer, 21)) mult = mult.time(upgradeEffect(this.layer, 21))
         return mult
     },
-    gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
-    },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
