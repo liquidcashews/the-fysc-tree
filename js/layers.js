@@ -25,6 +25,7 @@ addLayer("s", {
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    layerShown() {return true},
     upgrades: {
         11: {
             title: "Get a bad stream hoster",
@@ -40,8 +41,14 @@ addLayer("s", {
                 let ret = player[this.layer].points.add(1).pow(0.45)
                 if (ret.gte("1000000")) ret = ret.pow(0.5).times("1000")
                     return ret;
-            }
-        }
+            },
+            effectDisplay() {return format (this.effect())+"x"}
+        },
+        13: {
+            title: "Just Self-Synergy",
+            description: "Boost FP based on FP. (Does nothing)",
+            cost: new Decimal (69),
+        },
     },
-    layerShown(){return true},
-})
+},
+)
