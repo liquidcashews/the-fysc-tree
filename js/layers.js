@@ -12,7 +12,11 @@ addLayer("s", {
     baseResource: "fysc players", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    gainExp() {
+        exponent = new Decimal (0.5)
+        if (hasupgrade(this.layer, 21)) exponent = exponent.add(0.1)
+        return exponent
+    }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
@@ -26,6 +30,8 @@ addLayer("s", {
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    softcap: new Decimal (1e150),
+    softcapPower: new Decimal (0.45),
     layerShown() {return true},
     upgrades: {
         11: {
@@ -70,10 +76,21 @@ addLayer("s", {
     },
 },
 )
-addLayer("hx", {
+addLayer("h", {
     name: "HEXZD Points",
     symbol: "H",
     color: "#00009A",
+    position: 1,
+    startData() { return {
+        unlocked: (hasUpgrade("s", 21)),
+        points: new Decimal (0),
+        best: new Decimal (0),
+        total: new Decimal (0),
+    }
+},
+    requires: new Decimal (5000),
+    baseResource: (player["c"]),
+    type: "normal",
 },
     
 )
