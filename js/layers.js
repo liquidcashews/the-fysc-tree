@@ -34,7 +34,7 @@ addLayer("s", {
         },
         12: {
             title: "Create a forum in the FYSC Discord",
-            description: "Boost Fysc Players based on subs. (x^0.45, does nothing for now)",
+            description: "Boost Fysc Players based on subs. (x^0.45)",
             cost: new Decimal(10),
             unlocked() { return (hasUpgrade(this.layer, 11))},
             effect() {
