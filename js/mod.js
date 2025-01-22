@@ -12,14 +12,13 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.02",
-	name: "Upgrades Squared",
+	num: "0.03",
+	name: "New (Omega)Layer",
 }
 
-let changelog = `<h1>Changelog:</h1><br>
+let changelog = `<h1>Changelog:</h1><br>,
 	<h3>v0.01</h3><br>
-		- Added 2 upgrades, one without an effect yet though. <br>`
-
+	- Added 2 upgrades, one without an effect yet though.`
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
