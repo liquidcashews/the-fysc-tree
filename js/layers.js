@@ -12,7 +12,8 @@ addLayer("s", {
     baseResource: "fysc players", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    calculateExponent() exponent = new Decimal (0.5),
+    if (hasUpgrade) // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
@@ -55,6 +56,12 @@ addLayer("s", {
                 return ret
             }
         },
+        21: {
+            title: "Master the power of Lcedit",
+            description: "Nice features, also you added fires! Raise Subscribers Mult to the 1.1 (Only after the first column effects) :)",
+            cost: new Decimal (420),
+            unlock () {return (hasUpgrade(this.layer, 13))}
+        }
     },
 },
 )
