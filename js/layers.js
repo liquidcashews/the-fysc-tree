@@ -8,8 +8,8 @@ addLayer("s", {
     }},
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
-    resource: "prestige points", // Name of prestige currency
-    baseResource: "points", // Name of resource prestige is based on
+    resource: "subscribers", // Name of prestige currency
+    baseResource: "fysc players", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
@@ -23,7 +23,7 @@ addLayer("s", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     upgrades: {
         11: {
@@ -33,9 +33,14 @@ addLayer("s", {
         },
         12: {
             title: "Create a forum in the FYSC Discord",
-            description: "Boost Fysc Players based on subs. (x^0.55, does nothing for now)",
+            description: "Boost Fysc Players based on subs. (x^0.45, does nothing for now)",
             cost: new Decimal(10),
             unlocked() { return (hasUpgrade(this.layer, 11))},
+            effect() {
+                let ret = player[this.layer].points.add(1).pow(0.45)
+                if (ret.gte("1000000")) ret = ret.pow(0.5).times("1000")
+                    return ret;
+            }
         }
     },
     layerShown(){return true},
