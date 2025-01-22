@@ -46,8 +46,13 @@ addLayer("s", {
         },
         13: {
             title: "Just Self-Synergy",
-            description: "Boost FP based on FP. (Does nothing)",
-            cost: new Decimal (69),
+            description: "Boost FP based on FP. (x^0.25)",
+            cost: new Decimal (100),
+            unlocked() {return (hasUpgrade(this.layer, 12))},
+            effect() {
+                let ret = points.points.add(1).pow(0.25)
+                if (ret.gte("1e30")) ret = ret.pow(1/3).times("1e20")
+            }
         },
     },
 },
