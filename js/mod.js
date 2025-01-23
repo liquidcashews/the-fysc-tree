@@ -18,7 +18,7 @@ let VERSION = {
 
 let changelog = `<h1>Changelog:</h1><br>,
 	<h3>v0.01</h3><br>
-	- Added 2 upgrades, one without an effect yet though.`
+	- Added a upgrades, one without an effect yet though.`
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
