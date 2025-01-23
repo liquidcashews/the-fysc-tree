@@ -84,6 +84,7 @@ addLayer("h", {
     baseResource: ("s"),
     type: "normal",
     layerShown() {(hasUpgrade("s", 21))},
+    baseAmount() {player["s"]},
     hotkeys: [
         {key: "h", description: "H: Reset for HEXZD Points", onpress(){if (canReset (this.layer)) doReset (this.layer)}},
     ],
