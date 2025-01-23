@@ -20,7 +20,8 @@ addLayer("s", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
-        if (hasUpgrade(this.layer, 21)) mult = mult.time(upgradeEffect(this.layer, 21))
+        if (hasUpgrade(this.layer, 21)) mult = mult.times(upgradeEffect(this.layer, 21))
+        if (hasUpgrade(this.layer, 22)) mult = mult.times(upgradeEffect(this.layer, 22))
         return mult
     },
     hotkeys: [
@@ -68,7 +69,7 @@ addLayer("s", {
             title: "Start coding Codemark Tradename",
             description: "How about some Subscribers? Boost Subs with Subs. (These are getting boring) (x^0.15)",
             cost: new Decimal (1500),
-            unlocked () {return (hasUpgrade(this.layer, 13))},
+            unlocked () {return (hasUpgrade(this.layer, 21))},
             effect() {
                 let ret = player[this.layer].points.add(1).pow(0.15)
                 return ret
