@@ -67,8 +67,7 @@ addLayer("s", {
         },
     },
 },
-)
-addLayer("h", {
+"h", {
     name: "HEXZD Points",
     symbol: "H",
     color: "#00009A",
