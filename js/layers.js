@@ -64,26 +64,17 @@ addLayer("s", {
             description: "Nice features, also you added fires! Raise Subscribers to the 1.2, also unlock a new layer :O",
             cost: new Decimal (250),
             unlocked () {return (hasUpgrade(this.layer, 13))},
+        22: {
+            title: "Start coding Codemark Tradename",
+            description: "How about some Subscribers? Boost Subs with Subs. (These are getting boring) (x^0.15)",
+            cost: new Decimal (1500),
+            unlocked () {return (hasUpgrade(this.layer, 13))},
+            effect() {
+                let ret = player[this.layer].points.add(1).pow(0.15)
+                return ret
+            },
+            effectDisplay() {return format (this.effect())+"x"}
+        }
         },
     },
-}, "h", {
-    name: "HEXZD Points",
-    symbol: "H",
-    color: "#00009A",
-    position: 1,
-    startData() { return {
-        unlocked: (hasUpgrade("s", 21)),
-        points: new Decimal (0),
-        best: new Decimal (0),
-        total: new Decimal (0),
-    }
-}, 
-    requires: new Decimal (5000),
-    baseResource: ("s"),
-    type: "normal",
-    layerShown() {(hasUpgrade("s", 21))},
-    baseAmount() {player["s"]},
-    hotkeys: [
-        {key: "h", description: "H: Reset for HEXZD Points", onpress(){if (canReset (this.layer)) doReset (this.layer)}},
-    ],
-})
+}, )
