@@ -84,5 +84,6 @@ addLayer("h", {
     baseResource: ("c"),
     type: "normal",
 },
+layerShown() (hasUpgrade("s", 21)),
     
 )
