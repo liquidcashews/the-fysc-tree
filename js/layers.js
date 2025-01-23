@@ -67,7 +67,8 @@ addLayer("s", {
         },
     },
 },
-"h", {
+)
+addLayer("h", {
     name: "HEXZD Points",
     symbol: "H",
     color: "#00009A",
@@ -87,5 +88,4 @@ addLayer("s", {
         {key: "h", description: "H: Reset for HEXZD Points", onpress(){if (canReset (this.layer)) doReset (this.layer)}},
     ],
 },
-    
-)
+)  
