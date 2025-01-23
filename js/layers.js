@@ -66,9 +66,7 @@ addLayer("s", {
             unlocked () {return (hasUpgrade(this.layer, 13))},
         },
     },
-},
-)
-addLayer("h", {
+}, "h", {
     name: "HEXZD Points",
     symbol: "H",
     color: "#00009A",
@@ -79,7 +77,7 @@ addLayer("h", {
         best: new Decimal (0),
         total: new Decimal (0),
     }
-},
+}, 
     requires: new Decimal (5000),
     baseResource: ("s"),
     type: "normal",
@@ -88,5 +86,4 @@ addLayer("h", {
     hotkeys: [
         {key: "h", description: "H: Reset for HEXZD Points", onpress(){if (canReset (this.layer)) doReset (this.layer)}},
     ],
-},
-)  
+})
