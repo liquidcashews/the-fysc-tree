@@ -80,9 +80,12 @@ addLayer("s", {
     }
 },
     requires: new Decimal (5000),
-    baseResource: ("c"),
+    baseResource: ("s"),
     type: "normal",
+    layerShown() {(hasUpgrade("s", 21))},
+    hotkeys: [
+        {key: "h", description: "H: Reset for HEXZD Points", onpress(){if (canReset (this.layer)) doReset (this.layer)}},
+    ],
 },
-layerShown() (hasUpgrade("s", 21)),
     
 )
