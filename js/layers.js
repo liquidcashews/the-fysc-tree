@@ -13,9 +13,9 @@ addLayer("s", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainExp() {
-        let ret = new Decimal (0.5)
-        if (hasUpgrade(this.layer, 21)) ret = ret.add(0.1)
-        return ret
+        let mult = new Decimal (0.5)
+        if (hasUpgrade(this.layer, 21)) mult = mult.times(1.2)
+        return mult
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
