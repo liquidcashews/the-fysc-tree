@@ -1,7 +1,7 @@
 addLayer("s", {
     name: "subscribers", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "S", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
@@ -13,9 +13,9 @@ addLayer("s", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainExp() {
-        let mult = new Decimal (0.5)
-        if (hasUpgrade(this.layer, 21)) mult = mult.add(0.1)
-        return mult
+        let ret = new Decimal (0.5)
+        if (hasUpgrade(this.layer, 21)) ret = ret.add(0.1)
+        return ret
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
