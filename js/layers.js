@@ -5,6 +5,8 @@ addLayer("s", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
+        best: new Decimal (0),
+        total: new Decimal (0),
     }},
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -13,9 +15,9 @@ addLayer("s", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainExp() {
-        let mult = new Decimal (0.5)
-        if (hasUpgrade(this.layer, 21)) mult = mult.times(1.2)
-        return mult
+        let ret = new Decimal (0.5)
+        if (hasUpgrade(this.layer, 21)) ret = ret.times(1.2)
+        return ret
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -65,6 +67,9 @@ addLayer("s", {
             description: "Nice features, also you added fires! Raise Subscribers to the 1.2, :O",
             cost: new Decimal (250),
             unlocked () {return (hasUpgrade(this.layer, 13))}},
+        22: {
+            title: "Start coding CodeMark TradeName"
+        }
         }
     },
 )
