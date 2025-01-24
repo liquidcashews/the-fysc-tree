@@ -12,10 +12,11 @@ addlayer("s", {
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "subscribers", // Name of prestige currency
     baseResource: "fysc players", // Name of resource prestige is based on
+    exponent: 0.5,
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainExp() {
-        let ret = new Decimal (0.5)
+        let ret = new Decimal (1)
         if (hasUpgrade(this.layer, 21)) ret = ret.times(1.2)
         return ret
     }, // Prestige currency exponent
