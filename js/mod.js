@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.03",
-	name: "New (Omega)Layer",
+	num: "0.04",
+	name: "No omegalayer, only Codemark Tradename",
 }
 
 let changelog = `<h1>Changelog:</h1><br>,

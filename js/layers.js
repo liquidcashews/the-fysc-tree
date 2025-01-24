@@ -40,7 +40,7 @@ addLayer("s", {
             title: "Create a forum in the FYSC Discord",
             description: "Boost Fysc Players based on subs. (x^0.45)",
             cost: new Decimal(10),
-            unlocked() {(hasUpgrade(this.layer, 11))},
+            unlocked() {return (hasUpgrade(this.layer, 11))},
             effect() {
                 let ret = player["s"].points.add(1).pow(0.45)
                 if (ret.gte("1000000")) ret = ret.sqrt().times("1000")
@@ -52,7 +52,7 @@ addLayer("s", {
             title: "Just Self-Synergy",
             description: "Boost FP based on FP. (x^0.35)",
             cost: new Decimal (100),
-            unlocked() {(hasUpgrade(this.layer, 12))},
+            unlocked() {return (hasUpgrade(this.layer, 12))},
             effect() {
                 let ret = player.points.add(1).pow(0.35)
                 if (ret.gte("1e30")) ret = ret.pow(0.2).times("1e24")
@@ -64,7 +64,7 @@ addLayer("s", {
             title: "Master the power of Lcedit",
             description: "Nice features, also you added fires! Raise Subscribers to the 1.2, :O",
             cost: new Decimal (250),
-            unlocked () {(hasUpgrade(this.layer, 13))}},
+            unlocked () {return (hasUpgrade(this.layer, 13))}},
         22: {
             title: "Start coding Codemark Tradename",
             description: "How about some Subscribers? Boost Subs with Subs. (These are getting boring) (x^0.15)",
