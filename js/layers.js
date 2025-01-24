@@ -43,7 +43,7 @@ addLayer("s", {
             unlocked() {(hasUpgrade(this.layer, 11))},
             effect() {
                 let ret = player["s"].points.add(1).pow(0.45)
-                if (ret.gte("1000000")) ret = ret.pow(0.5).times("1000")
+                if (ret.gte("1000000")) ret = ret.sqrt().times("1000")
                     return ret;
             },
             effectDisplay() {return format (this.effect())+"x"}
@@ -55,9 +55,9 @@ addLayer("s", {
             unlocked() {(hasUpgrade(this.layer, 12))},
             effect() {
                 let ret = player.points.add(1).pow(0.35)
-                if (ret.gte("1e30")) ret = ret.pow(1/3).times("1e20")
+                if (ret.gte("1e30")) ret = ret.pow(0.2).times("1e24")
                 return ret
-            },
+        },
             effectDisplay () {return format (this.effect())+"x"}
         },
         21: {

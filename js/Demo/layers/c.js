@@ -33,8 +33,6 @@ addLayer("c", {
         canBuyMax() {}, // Only needed for static layers with buy max
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
-            if (hasUpgrade(this.layer, 166)) mult = mult.times(2) // These upgrades don't exist
-			if (hasUpgrade(this.layer, 120)) mult = mult.times(upgradeEffect(this.layer, 120))
             return mult
         },
         gainExp() { // Calculate the exponent on main currency from bonuses
