@@ -11,6 +11,7 @@ addLayer("s", {
     resource: "subscribers", // Name of prestige currency
     baseResource: "fysc players", // Name of resource prestige is based on
     exponent: 0.5,
+    position: 0,
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainMult() { // Calculate the multiplier for main currency from bonuses
