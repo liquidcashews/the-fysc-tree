@@ -4,7 +4,7 @@ let modInfo = {
 	pointsName: "fysc players",
 	modFiles: ["layers.js", "tree.js"],
 
-	discordName: "",
+	discordName: "FYSC Discord",
 	discordLink: "",
 	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.04",
-	name: "No omegalayer, only Codemark Tradename",
+	num: "0.05",
+	name: "i got it to work",
 }
 
 let changelog = `<h1>Changelog:</h1><br>,
