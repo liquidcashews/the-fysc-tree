@@ -22,7 +22,10 @@ addLayer("s", {
         return mult
     },
     gainExp()
-    {return new Decimal (1)},
+    {let ret = new Decimal (1)
+        if (hasUpgrade(this.layer, 21)) ret = ret.times(1.2)
+            return ret
+    },
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
