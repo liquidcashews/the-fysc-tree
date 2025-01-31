@@ -71,7 +71,7 @@ addLayer("s", {
             title: "Start coding CodeMark TradeName",
             cost: new Decimal (1000),
             description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear (x^0.2)",
-            unlocked() {return (hasUpgrade(this.layer, 13))},
+            unlocked() {return (hasUpgrade(this.layer, 21))},
             effect() {
                 let ret = player[this.layer].points.pow(0.2)
                 if (ret.gte("1e10")) ret = ret.pow(0.4).times("1e6")
