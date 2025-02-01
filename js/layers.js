@@ -22,9 +22,9 @@ addLayer("s", {
         return mult
     },
     gainExp()
-    { let exponent = new Decimal (1)
-    if (hasUpgrade(this.layer, 21)) exponent = new Decimal (1.2)
-        return exponent
+    {
+    if (hasUpgrade(this.layer, 21)) return new Decimal (1.2)
+       else return new Decimal (1)
     },
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
