@@ -23,8 +23,9 @@ addLayer("s", {
     },
     gainExp()
     {
-    if (hasUpgrade(this.layer, 21)) return new Decimal (1.2)
-       else return new Decimal (1)
+        let mult = new Decimal (1)
+    if (hasUpgrade(this.layer, 21)) mult = mult.times(UpgradeEffect(this.layer, 21))
+    return mult
     },
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -66,6 +67,8 @@ addLayer("s", {
             title: "Master the power of Lcedit",
             description: "Nice features, also you added fires! Raise Subscribers to the 1.2, :O",
             cost: new Decimal (250),
+            upgradeEffect()
+            {return new Decimal (1.2)},
             unlocked () {return (hasUpgrade(this.layer, 13))}},
         22: {
             title: "Start coding CodeMark TradeName",
@@ -79,5 +82,5 @@ addLayer("s", {
             },
              effectDisplay () {return format (this.effect())+"x"},
         }
-        }
+    }
     })
