@@ -22,9 +22,9 @@ addLayer("s", {
         return mult
     },
     gainExp()
-    { let mult = new Decimal (1)
-    if (hasUpgrade(this.layer, 21)) mult = new Decimal (1.2)
-        return mult
+    { let exponent = new Decimal (1)
+    if (hasUpgrade(this.layer, 21)) exponent = new Decimal (1.2)
+        return exponent
     },
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -76,7 +76,8 @@ addLayer("s", {
                 let ret = player[this.layer].points.pow(0.2)
                 if (ret.gte("1e10")) ret = ret.pow(0.4).times("1e6")
                 return ret
-            }
+            },
+             effectDisplay () {return format (this.effect())+"x"},
         }
         }
     })
