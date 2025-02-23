@@ -17,13 +17,14 @@ addLayer("s", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
-        if (hasUpgrade(this.layer, 21)) mult = mult.times(upgradeEffect(this.layer, 21))
         if (hasUpgrade(this.layer, 22)) mult = mult.times(upgradeEffect(this.layer, 22))
         return mult
     },
     gainExp()
     {
-    return new Decimal (1)
+    let mult = new Decimal (1.2)
+    if (hasUpgrade(this.layer, 21)) mult = new Decimal (1.2)
+        return mult
     },
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -65,9 +66,8 @@ addLayer("s", {
             title: "Master the power of Lcedit",
             description: "Nice features, also you added fires! Raise Subscribers to the 1.2, :O",
             cost: new Decimal (250),
-            upgradeEffect()
-            {let ret = player["s"].points.add(1).pow(0.2)
-                return ret
+            effect()
+            {return new Decimal (1.2)
             },
             unlocked () {return (hasUpgrade(this.layer, 13))},
             effectDisplay () {return format (this.effect())+"x"},
