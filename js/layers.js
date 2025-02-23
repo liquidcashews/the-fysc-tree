@@ -66,7 +66,7 @@ addLayer("s", {
             description: "Nice features, also you added fires! Raise Subscribers to the 1.2, :O",
             cost: new Decimal (250),
             upgradeEffect()
-            {return player["s"].points.add(1).pow(0.2)},
+            {return player[this.layer].points.add(1).pow(0.2)},
             unlocked () {return (hasUpgrade(this.layer, 13))}},
         22: {
             title: "Start coding CodeMark TradeName",
