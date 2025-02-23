@@ -17,14 +17,13 @@ addLayer("s", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
+        if (hasUpgrade(this.layer, 21)) mult = mult.times(upgradeEffect(this.layer, 21))
         if (hasUpgrade(this.layer, 22)) mult = mult.times(upgradeEffect(this.layer, 22))
         return mult
     },
     gainExp()
     {
-    exp = new Decimal (1)
-    if (hasUpgrade(this.layer, 21)) exp = exp.times(UpgradeEffect(this.layer, 21))
-    return exp
+    return new Decimal (1)
     },
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
