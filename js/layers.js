@@ -67,16 +67,15 @@ addLayer("s", {
             description: "Nice features, also you added fires! Raise Subscribers to the 1.2, :O",
             cost: new Decimal (250),
             upgradeEffect()
-            {return new Decimal (1.2)},
+            {return player["s"].pow(0.2).add(1)},
             unlocked () {return (hasUpgrade(this.layer, 13))}},
         22: {
             title: "Start coding CodeMark TradeName",
             cost: new Decimal (1000),
-            description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear (x^0.2)",
+            description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear (log3)",
             unlocked() {return (hasUpgrade(this.layer, 21))},
             effect() {
-                let ret = player[this.layer].points.pow(0.2)
-                if (ret.gte("1e10")) ret = ret.pow(0.4).times("1e6")
+                let ret = player[this.layer].points.add(1).log(3)
                 return ret
             },
              effectDisplay () {return format (this.effect())+"x"},
