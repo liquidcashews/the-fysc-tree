@@ -6,7 +6,7 @@ addLayer("s", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#4BDC13",
+    color: "#FF0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "subscribers", // Name of prestige currency
     baseResource: "fysc players", // Name of resource prestige is based on
@@ -85,3 +85,32 @@ addLayer("s", {
         },
     }
     })
+    addLayer("h",
+{name: "HEXZD Points",
+    symbol: "H",
+    row: 1,
+    position: 0,
+    startData() { return {
+        unlocked: (hasUpgrade("s", 22)),
+        points: new Decimal (0),
+    }},
+    baseAmount() {return player["s"].points},
+    color: "#011F98",
+    exponent: 0.3,
+    type: "normal",
+    resource: "HEXZD points",
+    baseResource: "subscribers",
+    gainMult() {
+        return new Decimal (1)
+    },
+    gainExp() {
+        return new Decimal (1)
+    },
+    requires: new Decimal (100000),
+    effect() {
+    balatro = player[this.layer].points.pow(0.69).add(1)
+    if (balatro.gte("1e25")) balatro = balatro.pow(0.469)
+    },
+effectDisplay () {"the hexzd inflates subs by " + format (this.effect())+"x"},
+}
+)
