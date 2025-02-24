@@ -18,7 +18,7 @@ addLayer("s", {
         mult = new Decimal(1)
         if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
         if (hasUpgrade(this.layer, 22)) mult = mult.times(upgradeEffect(this.layer, 22))
-            mult = mult.times(effect(player["h"]))
+            mult = mult.times(effect(player["h"].points))
         return mult
     },
     gainExp()
@@ -109,9 +109,12 @@ addLayer("s", {
     },
     requires: new Decimal (100000),
     effect() {
-    balatro = player[this.layer].points.pow(0.69).add(1)
-    if (balatro.gte("1e25")) balatro = balatro.pow(0.469)
+        return {
+    goofyAhhInflation: (player[this.layer].points.pow(0.69).add(1))
+        }
     },
-effectDisplay () {"the hexzd inflates subs by " + format (this.effect())+"x"},
+effectDisplay () {
+    eff = this.effect();
+    return "the hexzd inflates subs by " + format (eff.goofyAhhInflation)+"x"},
 }
 )
