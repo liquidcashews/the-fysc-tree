@@ -18,6 +18,7 @@ addLayer("s", {
         mult = new Decimal(1)
         if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
         if (hasUpgrade(this.layer, 22)) mult = mult.times(upgradeEffect(this.layer, 22))
+            mult = mult.times(effect(player["h"]))
         return mult
     },
     gainExp()
@@ -94,7 +95,7 @@ addLayer("s", {
         unlocked: (hasUpgrade("s", 22)),
         points: new Decimal (0),
     }},
-    baseAmount() {return player["s"].points},
+    baseAmount() {return player["s"]},
     color: "#011F98",
     exponent: 0.3,
     type: "normal",
