@@ -95,7 +95,7 @@ addLayer("s", {
         unlocked: (hasUpgrade("s", 22)),
         points: new Decimal (0),
     }},
-    baseAmount() {return player["s"]},
+    baseAmount() {return player["s"].points},
     color: "#011F98",
     exponent: 0.3,
     type: "normal",
@@ -113,7 +113,7 @@ addLayer("s", {
     goofyAhhInflation: (player[this.layer].points.pow(0.69).add(1))
         }
     },
-effectDisplay () {
+effectDescription () {
     eff = this.effect();
     return "the hexzd inflates subs by " + format (eff.goofyAhhInflation)+"x"},
 }
