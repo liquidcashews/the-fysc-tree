@@ -18,7 +18,7 @@ addLayer("s", {
         mult = new Decimal(1)
         if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
         if (hasUpgrade(this.layer, 22)) mult = mult.times(upgradeEffect(this.layer, 22))
-            mult = mult.times(effect(player["h"].points))
+            mult = mult.times(eff.goofyAhhInflation)
         return mult
     },
     gainExp()
