@@ -110,7 +110,7 @@ addLayer("s", {
     requires: new Decimal (100000),
     effect() {
         return {
-    goofyAhhInflation: (player[this.layer].points.pow(0.69).add(1))
+    goofyAhhInflation: (player[this.layer].points ^ 0.69 + 1)
         }
     },
 effectDescription () {
