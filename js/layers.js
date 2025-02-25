@@ -101,6 +101,7 @@ addLayer("s", {
     type: "normal",
     resource: "HEXZD points",
     baseResource: "subscribers",
+    softcapPower: new Decimal (0.4),
     gainMult() {
         return new Decimal (1)
     },
@@ -110,7 +111,7 @@ addLayer("s", {
     requires: new Decimal (100000),
     effect() {
         return {
-    goofyAhhInflation: (player[this.layer].points ^ 0.69 + 1)
+    goofyAhhInflation: (player[this.layer].points.pow(0.33).add(1))
         }
     },
 effectDescription () {
