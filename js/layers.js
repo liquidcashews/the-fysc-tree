@@ -101,6 +101,7 @@ addLayer("s", {
     resource: "HEXZD points",
     baseResource: "subscribers",
     softcapPower: new Decimal (0.4),
+    layerShown() {return (hasUpgrade ("s", 22))},
     gainMult() {
         return new Decimal (1)
     },
