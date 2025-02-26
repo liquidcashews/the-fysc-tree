@@ -1,4 +1,4 @@
-addLayer("s","h", {
+addLayer("s", {
     name: "subscribers", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "S", // This appears on the layer's node. Default is the id with the first letter capitalized
     row: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -18,7 +18,6 @@ addLayer("s","h", {
         mult = new Decimal(1)
         if (hasUpgrade(this.layer, 11)) mult = mult.times(2)
         if (hasUpgrade(this.layer, 22)) mult = mult.times(upgradeEffect(this.layer, 22))
-            mult = mult.times(eff.goofyAhhInflation)
         return mult
     },
     gainExp()
@@ -85,7 +84,8 @@ addLayer("s","h", {
              effectDisplay () {return format (this.effect())+"x"},
         },
     }
-    },
+    }, )
+    addLayer ("h",
 {name: "HEXZD Points",
     symbol: "H",
     row: 1,
@@ -108,13 +108,4 @@ addLayer("s","h", {
         return new Decimal (1)
     },
     requires: new Decimal (100000),
-    effect() {
-        return {
-    goofyAhhInflation: (player[this.layer].points.pow(0.33).add(1))
-        }
-    },
-effectDescription () {
-    eff = this.effect();
-    return "the hexzd inflates subs by " + format (eff.goofyAhhInflation)+"x"},
-}
-)
+})
