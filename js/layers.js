@@ -94,7 +94,7 @@ addLayer("s", {
         unlocked: (hasUpgrade("s", 22)),
         points: new Decimal (0),
     }},
-    baseAmount() {return player["s"]},
+    baseAmount() {return player["s"].points},
     color: "#011F98",
     exponent: 0.3,
     type: "normal",
