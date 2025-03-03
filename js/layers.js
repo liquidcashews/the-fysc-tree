@@ -44,7 +44,7 @@ addLayer("subscribe", {
             cost: new Decimal(10),
             unlocked() {return (hasUpgrade(this.layer, 11))},
             effect() {
-                let ret = player["s"].points.add(1).pow(0.45)
+                let ret = player.subscribe.points.add(1).pow(0.45)
                 if (ret.gte("1000000")) ret = ret.sqrt().times("1000")
                     return ret;
             },
@@ -78,7 +78,7 @@ addLayer("subscribe", {
             description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear (log3)",
             unlocked() {return (hasUpgrade(this.layer, 21))},
             effect() {
-                let ret = player[this.layer].points.add(1).log(3)
+                let ret = player.subscribe.points.add(1).log(3)
                 return ret
             },
              effectDisplay () {return format (this.effect())+"x"},
