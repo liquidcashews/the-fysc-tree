@@ -1,4 +1,4 @@
-addLayer("s", {
+addLayer("subscribe", {
     name: "subscribers", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "S", // This appears on the layer's node. Default is the id with the first letter capitalized
     row: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -85,7 +85,7 @@ addLayer("s", {
         },
     }
     }, )
-    addLayer ("h",
+    addLayer("hexzd",
 {name: "HEXZD Points",
     symbol: "H",
     row: 1,
@@ -94,14 +94,14 @@ addLayer("s", {
         unlocked: (hasUpgrade("s", 22)),
         points: new Decimal (0),
     }},
-    baseAmount() {return player["s"].points},
-    color: "#011F98",
-    exponent: 0.3,
+    baseAmount() {return player.subscribe.points},
+    color: "#011F98", // color stat wars gave me
+    exponent: 0.3, // player[layer] my taper
     type: "normal",
     resource: "HEXZD points",
     baseResource: "subscribers",
     softcapPower: new Decimal (0.4),
-    layerShown() {return (hasUpgrade ("s", 22))},
+    layerShown() {return (hasUpgrade ("subscribe", 22))},
     gainMult() {
         return new Decimal (1)
     },
@@ -109,4 +109,4 @@ addLayer("s", {
         return new Decimal (1)
     },
     requires: new Decimal (100000),
-})
+}, )
