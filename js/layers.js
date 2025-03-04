@@ -75,7 +75,7 @@ addLayer("subs", {
         22: {
             title: "Start coding CodeMark TradeName",
             cost: new Decimal (1000),
-            description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear (log3)",
+            description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear",
             unlocked() {return (hasUpgrade("subs", 21))},
             effect() {
                 let ret = player.subs.points.add(1).log10().pow(1.85)
