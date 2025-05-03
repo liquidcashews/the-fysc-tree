@@ -22,9 +22,9 @@ addLayer("subs", {
     },
     gainExp()
     {
-        sigma = new Decimal (1)
-    if (hasUpgrade("subs", 21)) sigma = new Decimal (1.2)
-        return sigma
+        exponent = new Decimal (1)
+    if (hasUpgrade("subs", 21)) exponent = new Decimal (1.2)
+        return exponent
     },
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -94,7 +94,7 @@ addLayer("subs", {
         unlocked: (hasUpgrade("subs", 22)),
         points: new Decimal (0),
     }},
-    baseAmount() {return player.subscribe.points; },
+    baseAmount() {return player.subs.points; },
     color: "#011F98", // color stat wars gave me
     exponent: 0.3, // player[layer] my taper
     type: "normal",
