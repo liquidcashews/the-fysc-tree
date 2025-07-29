@@ -85,28 +85,3 @@ addLayer("subs", {
         },
     }
     }, )
-    addLayer("hexzd",
-{name: "HEXZD Points",
-    symbol: "H",
-    row: 1,
-    position: 0,
-    startData() { return {
-        unlocked: (hasUpgrade("subs", 22)),
-        points: new Decimal (0),
-    }},
-    baseAmount() {return player.subs.points; },
-    color: "#011F98", // color stat wars gave me
-    exponent: 0.3, // player[layer] my taper
-    type: "normal",
-    resource: "HEXZD points",
-    baseResource: "subscribers",
-    softcapPower: new Decimal (0.4),
-    layerShown() {return (hasUpgrade ("subs", 22))},
-    gainMult() {
-        return new Decimal (1)
-    },
-    gainExp() {
-        return new Decimal (1)
-    },
-    requires: new Decimal (100000),
-}, )
