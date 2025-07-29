@@ -48,7 +48,7 @@ addLayer("subs", {
                 if (ret.gte("1000000")) ret = ret.sqrt().times("1000")
                     return ret;
             },
-            effectDisplay() {return format (this.effect())+"x"}
+            effectDisplay() {return format (this.effect())+"x"},
         },
         13: {
             title: "Just Self-Synergy",
