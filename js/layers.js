@@ -78,10 +78,17 @@ addLayer("subs", {
             description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear",
             unlocked() {return (hasUpgrade("subs", 21))},
             effect() {
-                let ret = player.subs.points.add(1).pow(0.5)
+                let ret = player.subs.points.add(1).log10().pow(2)
                 return ret
             },
              effectDisplay () {return format (this.effect())+"x"},
         },
+        23: {
+            title: "Lcedit improvements",
+            cost: new Decimal (10000),
+            description: "Now you have a cool header on top, and you found out how to host the website code! Boost FYSC players by ^1.05.",
+            effect() {return new Decimal (1.05)},
+            unlocked() {return (hasUpgrade("subs, 22"))},
+         }
     }
     }, )
