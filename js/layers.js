@@ -23,7 +23,7 @@ addLayer("subs", {
     gainExp()
     {
         exponent = new Decimal (1)
-    if (hasUpgrade("subs", 21)) exponent = new Decimal (1.2)
+    if (hasUpgrade("subs", 21)) exponent = new Decimal (1.15)
         return exponent
     },
     hotkeys: [
@@ -64,13 +64,13 @@ addLayer("subs", {
         },
         21: {
             title: "Master the power of Lcedit",
-            description: "Nice features, also you added fires! Raise Subscribers to the 1.2, :O",
+            description: "Nice features, also you added fires! Raise Subscribers to the 1.15, :O",
             cost: new Decimal (250),
             effect()
-            {return new Decimal (1.2)
+            {return new Decimal (1.15)
             },
             unlocked () {return (hasUpgrade("subs", 13))},
-            effectDisplay () {return format (this.effect())+"x"},
+            effectDisplay () {return "^1.2"},
     },
         22: {
             title: "Start coding CodeMark TradeName",
@@ -89,6 +89,7 @@ addLayer("subs", {
             description: "Now you have a cool header on top, and you found out how to host the website code! Boost FYSC players by ^1.05.",
             effect() {return new Decimal (1.05)},
             unlocked() {return (hasUpgrade("subs, 22"))},
+            effectDisplay() {return "^1.05"}
          }
     }
     }, )

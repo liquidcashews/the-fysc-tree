@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.05",
-	name: "i got it to work",
+	num: "0.06",
+	name: "no more hexzd",
 }
 
 let changelog = `<h1>Changelog:</h1><br>,
@@ -43,6 +43,7 @@ function getPointGen() {
 	if (hasUpgrade("subs", 11)) gain = gain.times(2.5)
 	if (hasUpgrade("subs", 12)) gain = gain.times(upgradeEffect("subs", 12))
 	if (hasUpgrade("subs", 13)) gain = gain.times(upgradeEffect("subs", 13))
+	if (hasUpgrade("subs", 23)) gain = gain.pow(1.05)
 	return gain
 }
 
