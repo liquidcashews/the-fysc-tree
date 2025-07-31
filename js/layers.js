@@ -18,7 +18,7 @@ addLayer("subs", {
         mult = new Decimal(1)
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
-        mult = mult.times(eff.subinflation)
+        mult = mult.times(effect(subinflation))
         return mult
     },
     gainExp()
