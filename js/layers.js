@@ -87,7 +87,9 @@ addLayer("subs", {
             title: "Lcedit improvements",
             cost: new Decimal (10000),
             description: "Now you have a cool header on top, and you found out how to host the website code! Boost FYSC players by ^1.05.",
-            effect() {return new Decimal (1.05)},
+            effect() {return new Decimal (1.05)
+                
+            },
             unlocked() {return (hasUpgrade("subs", 22))},
             effectDisplay() {return "^"+format (this.effect())},
         },
