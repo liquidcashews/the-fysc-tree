@@ -92,7 +92,7 @@ addLayer("subs", {
                 
             },
             unlocked() {return (hasUpgrade("subs", 22))},
-            effectDisplay() {return "^"+format (this.effect())},
+            effectDisplay() {return "^"+format(this.effect())},
         },
     }
     }, )
@@ -117,8 +117,8 @@ addLayer("subs", {
         },
         effect() {
             return {
-            hexzdInflation: (player[this.layer].pow(0.25).add(1)),
-            subInflation: (player[this.layer].pow(0.2).add(1)),
+            hexzdInflation: (player.hexzd.pow(0.25).add(1)),
+            subInflation: (player.hexzd.pow(0.2).add(1)),
         }},
         effectDescription() {
             eff = this.effect();
