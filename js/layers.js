@@ -89,7 +89,7 @@ addLayer("subs", {
             description: "Now you have a cool header on top, and you found out how to host the website code! Boost FYSC players by ^1.05.",
             effect() {return new Decimal (1.05)},
             unlocked() {return (hasUpgrade("subs, 22"))},
-            effectDisplay() {return "^1.05"}
-         }
+            effectDisplay() {return "^1.05"},
+        },
     }
     }, )
