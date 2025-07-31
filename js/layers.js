@@ -99,7 +99,7 @@ addLayer("subs", {
         resource: "hexzd improvements",
         color: "#011F98",
         requires: new Decimal (500000),
-        layerShown: {return: hasUpgrade("subs", 23)},
+        layerShown: {return (hasUpgrade("subs", 23))},
         exponent: 0.3,
         row: 1,
         position: 0,
