@@ -69,7 +69,7 @@ addLayer("subs", {
             effect()
             {return new Decimal (1.15)
             },
-            unlocked () {return (hasUpgrade("subs", 13))},
+            unlocked() {return (hasUpgrade("subs", 13))},
             effectDisplay () {return "^1.15"},
     },
         22: {
