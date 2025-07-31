@@ -23,7 +23,7 @@ addLayer("subs", {
     gainExp()
     {
         exponent = new Decimal (1)
-    if (hasUpgrade("subs", 21)) exponent = new Decimal (1.15)
+        if (hasUpgrade("subs", 21)) exponent = exponent.times(1.15)
         return exponent
     },
     hotkeys: [
