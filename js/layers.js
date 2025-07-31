@@ -70,7 +70,7 @@ addLayer("subs", {
             {return new Decimal (1.15)
             },
             unlocked () {return (hasUpgrade("subs", 13))},
-            effectDisplay () {return "^1.2"},
+            effectDisplay () {return "^1.15"},
     },
         22: {
             title: "Start coding CodeMark TradeName",
@@ -78,7 +78,7 @@ addLayer("subs", {
             description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear",
             unlocked() {return (hasUpgrade("subs", 21))},
             effect() {
-                let ret = player.subs.points.add(1).log10().pow(2)
+                let ret = player.subs.points.add(1).log10().pow(1.35)
                 return ret
             },
              effectDisplay () {return format (this.effect())+"x"},
