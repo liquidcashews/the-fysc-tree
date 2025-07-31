@@ -95,3 +95,29 @@ addLayer("subs", {
         },
     }
     }, )
+    addLayer("hexzd", {
+        resource: "hexzd improvements",
+        color: "#011F98",
+        requires: new Decimal (500000),
+        layerShown: {return: hasUpgrade("subs", 23)},
+        exponent: 0.3,
+        row: 1,
+        position: 0,
+        baseResource: "subscribers",
+        gainMult() {
+            return new Decimal (1)
+        },
+        gainExp() {
+            return new Decimal (1)
+        },
+        effect() {
+            return {
+            hexzdInflation: (player[this.layer].pow(0.25).add(1))
+        }},
+        effectDescription() {
+            eff = this.effect();
+            eff.subinflation = eff.hexzdinflation.pow(0.7)
+            return "which are inflating fysc players by"+format(eff.hexzdinflation)+"and subs by"+format(eff.subinflation)
+        }
+    },
+    )
