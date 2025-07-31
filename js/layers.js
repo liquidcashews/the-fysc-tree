@@ -97,8 +97,8 @@ addLayer("subs", {
     }
     }, )
     addLayer("hexzd", {
-        name: "hexzd points"
-        symbol: "H"
+        name: "hexzd points",
+        symbol: "H",
         resource: "hexzd points",
         color: "#011F98",
         type: "normal",
