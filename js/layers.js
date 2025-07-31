@@ -117,11 +117,11 @@ addLayer("subs", {
         },
         effect() {
             return {
-            hexzdInflation: (player[this.layer].pow(0.25).add(1))
+            hexzdInflation: (player[this.layer].pow(0.25).add(1)),
+            subInflation: (player[this.layer].pow(0.2).add(1)),
         }},
         effectDescription() {
             eff = this.effect();
-            eff.subinflation = eff.hexzdinflation.pow(0.7)
             return "which are inflating fysc players by"+format(eff.hexzdinflation)+"and subs by"+format(eff.subinflation)
         }
     },
