@@ -18,7 +18,7 @@ addLayer("subs", {
         mult = new Decimal(1)
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
-        mult = mult.times(tmp.hexzd.effect.subInflation)
+        mult = mult.times(tmp.subInflation.effect)
         return mult
     },
     gainExp()
@@ -120,9 +120,5 @@ addLayer("subs", {
             hexzdInflation: (player[this.layer].points ^ 0.25 + 1),
             subInflation: (player[this.layer].points ^ 0.2 + 1)
         }},
-        effectDescription() {
-            eff = this.effect();
-            return "which are inflating fysc players by"+format(eff.hexzdinflation)+"and subs by"+format(eff.subinflation)
-        }
     },
     )
