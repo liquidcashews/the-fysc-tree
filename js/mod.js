@@ -44,7 +44,7 @@ function getPointGen() {
 	if (hasUpgrade("subs", 12)) gain = gain.times(upgradeEffect("subs", 12))
 	if (hasUpgrade("subs", 13)) gain = gain.times(upgradeEffect("subs", 13))
 	if (hasUpgrade("subs", 23)) gain = gain.pow(1.05)
-	gain = gain.times(format(eff.hexzdinflation))
+	gain = gain.times(effect(hexzdinflation))
 	return gain
 }
 
