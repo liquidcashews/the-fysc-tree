@@ -18,6 +18,7 @@ addLayer("subs", {
         mult = new Decimal(1)
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
+        mult = mult.times(eff.subinflation)
         return mult
     },
     gainExp()
@@ -96,14 +97,18 @@ addLayer("subs", {
     }
     }, )
     addLayer("hexzd", {
-        resource: "hexzd improvements",
+        name: "hexzd points"
+        symbol: "H"
+        resource: "hexzd points",
         color: "#011F98",
+        type: "normal",
         requires: new Decimal (500000),
-        layerShown: {return (hasUpgrade("subs", 23))},
+        layerShown() {return (hasUpgrade("subs", 23))},
         exponent: 0.3,
         row: 1,
         position: 0,
         baseResource: "subscribers",
+        baseAmount() {return player.subs; },
         gainMult() {
             return new Decimal (1)
         },
