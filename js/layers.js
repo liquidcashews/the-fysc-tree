@@ -117,8 +117,8 @@ addLayer("subs", {
         },
         effect() {
             return {
-            hexzdInflation: (player.hexzd.pow(0.25).add(1)),
-            subInflation: (player.hexzd.pow(0.2).add(1)),
+            hexzdInflation: (player.hexzd.points.pow(0.25).add(1)),
+            subInflation: (player.hexzd.points.pow(0.2).add(1)),
         }},
         effectDescription() {
             eff = this.effect();
