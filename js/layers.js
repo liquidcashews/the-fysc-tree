@@ -18,7 +18,7 @@ addLayer("subs", {
         mult = new Decimal(1)
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
-        mult = mult.times(tmp.subInflation.effect)
+        mult = mult.times(player.hexzd.points.pow(0.2).add(1))
         return mult
     },
     gainExp()
@@ -120,5 +120,17 @@ addLayer("subs", {
             hexzdInflation: (player[this.layer].points ^ 0.25 + 1),
             subInflation: (player[this.layer].points ^ 0.2 + 1)
         }},
+        effectDescription() {
+            return "which inflates fysc players by x" + format(player[this.layer].points.pow(0.25).add(1)) + " and subscribers by x" + format(player[this.layer].pow(0.2).add(1))
+        },
+        upgrades: {
+            11: {
+                title: "Make your layout custom made",
+                cost: new Decimal (0),
+                descrption: "Bro Copilot shut the he- I mean boost fysc players by x3 because your layout looks better",
+                effect() {return new Decimal(3)},
+                effectDisplay() {return "3x"},
+            },
+        }
     },
     )
