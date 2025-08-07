@@ -108,7 +108,7 @@ addLayer("subs", {
         row: 1,
         position: 0,
         baseResource: "subscribers",
-        baseAmount() {return player.subs; },
+        baseAmount() {return player.subs;},
         gainMult() {
             return new Decimal (1)
         },
@@ -116,10 +116,9 @@ addLayer("subs", {
             return new Decimal (1)
         },
         effect() {
-            return {
-            hexzdInflation: (player[this.layer].points ^ 0.25 + 1),
-            subInflation: (player[this.layer].points ^ 0.2 + 1)
-        }},
+            return player.hexzd.points.pow(0.25)
+            
+        },
         effectDescription() {
             return "which inflates fysc players by x" + format(player[this.layer].points.pow(0.25).add(1)) + " and subscribers by x" + format(player[this.layer].pow(0.2).add(1))
         },
@@ -131,6 +130,6 @@ addLayer("subs", {
                 effect() {return new Decimal(3)},
                 effectDisplay() {return "3x"},
             },
-        }
+        },
     },
     )
