@@ -126,7 +126,7 @@ addLayer("subs", {
             11: {
                 title: "Make your layout custom made",
                 cost: new Decimal (0),
-                descrption: "Bro Copilot shut the he- I mean boost fysc players by x3 because your layout looks better",
+                description: "Bro Copilot shut the he- I mean boost fysc players by x3 because your layout looks better",
                 effect() {return new Decimal(3)},
                 effectDisplay() {return "3x"},
             },
