@@ -116,11 +116,11 @@ addLayer("subs", {
             return new Decimal (1)
         },
         effect() {
-            return player.hexzd.points.pow(0.25)
+            return player.hexzd.points.pow(0.25).add(1)
             
         },
         effectDescription() {
-            return "which inflates fysc players by x" + format(player[this.layer].points.pow(0.25).add(1)) + " and subscribers by x" + format(player[this.layer].pow(0.2).add(1))
+            return "which inflates fysc players by x" + format(this.effect()) + " and subscribers by x" + format(this.effect().pow(0.8))
         },
         upgrades: {
             11: {
