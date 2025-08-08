@@ -116,7 +116,7 @@ addLayer("subs", {
             return new Decimal (1)
         },
         effect() {
-            return player.hexzd.points.pow(0.25).add(1)
+            return player[this.layer].points.pow(0.25).add(1);
             
         },
         effectDescription() {
