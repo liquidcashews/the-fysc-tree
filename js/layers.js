@@ -97,43 +97,43 @@ addLayer("subs", {
     }
     }, )
 addLayer("hexzd", {
-        name: "hexzd points",
-        symbol: "H",
-        resource: "hexzd points",
-        color: "#011F98",
-        type: "normal",
-        startData() { return {
-            unlocked: false,
-            points: new Decimal (0),
-        }},
-        requires: new Decimal (500000),
-        layerShown() {return (hasUpgrade("subs", 23))},
-        exponent: 0.3,
-        row: 1,
-        position: 0,
-        baseResource: "subscribers",
-        baseAmount() {return player.subs;},
-        gainMult() {
-            return new Decimal (1)
-        },
-        gainExp() {
-            return new Decimal (1)
-        },
-        effect() {
-            return player[this.layer].points.pow(0.25).add(1);
-            
-        },
-        effectDescription() {
-            return "which inflates fysc players and subscribers by x" + format(this.effect())
-        },
-        upgrades: {
-            11: {
-                title: "Make your layout custom made",
-                cost: new Decimal (0),
-                description: "Bro Copilot shut the he- I mean boost fysc players by x3 because your layout looks better",
-                effect() {return new Decimal(3)},
-                effectDisplay() {return "3x"},
+    name: "hexzd points", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "H",
+    row: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(500000),
+    }},
+    color: "#011F98",
+    requires: new Decimal(500000), // Can be a function that takes requirement increases into account
+    resource: "hexzd points", // Name of prestige currency
+    baseResource: "subscribers", // Name of resource prestige is based on
+    exponent: 0.3,
+    position: 0,
+    baseAmount() {return player.subs; }, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        return new Decimal(1)
+    },
+    gainExp()
+    {
+        return new Decimal (1)
+    },
+    hotkeys: [
+        {key: "h", description: "h: Reset for hexzd points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    softcap: new Decimal (1e200),
+    softcapPower: new Decimal (0.45),
+    layerShown() {return true},
+    upgrades: {
+    11: {
+          title: "Make your layout custom made",
+          cost: new Decimal (0),
+          description: "Bro Copilot shut the he- I mean boost fysc players by x3 because your layout looks better",
+          unlocked: true,
+          effect() {return new Decimal(3)},
+          effectDisplay() {return "3x"},
             },
         },
-    },
-    )
+    }, )
+                
