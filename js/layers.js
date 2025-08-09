@@ -102,6 +102,10 @@ addLayer("hexzd", {
         resource: "hexzd points",
         color: "#011F98",
         type: "normal",
+        startData: {
+            unlocked: player.subs.points.gte(500000),
+            points: new Decimal (0),
+        },
         requires: new Decimal (500000),
         layerShown() {return (hasUpgrade("subs", 23))},
         exponent: 0.3,
