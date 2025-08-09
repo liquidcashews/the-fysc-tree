@@ -18,7 +18,7 @@ addLayer("subs", {
         mult = new Decimal(1)
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
-        mult = mult.times(player.hexzd.points.pow(0.2).add(1))
+        mult = mult.times(player.hexzd.points.pow(0.25).add(1))
         return mult
     },
     gainExp()
@@ -96,7 +96,7 @@ addLayer("subs", {
         },
     }
     }, )
-    addLayer("hexzd", {
+addLayer("hexzd", {
         name: "hexzd points",
         symbol: "H",
         resource: "hexzd points",
@@ -120,7 +120,7 @@ addLayer("subs", {
             
         },
         effectDescription() {
-            return "which inflates fysc players by x" + format(this.effect()) + " and subscribers by x" + format(this.effect().pow(0.8))
+            return "which inflates fysc players and subscribers by x" + format(this.effect())
         },
         upgrades: {
             11: {
