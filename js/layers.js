@@ -105,7 +105,7 @@ addLayer("hexzd", {
         startData() { return {
             unlocked: false,
             points: new Decimal (0),
-        } },
+        }},
         requires: new Decimal (500000),
         layerShown() {return (hasUpgrade("subs", 23))},
         exponent: 0.3,
