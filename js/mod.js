@@ -43,7 +43,7 @@ function getPointGen() {
 	if (hasUpgrade("subs", 11)) gain = gain.times(2.5)
 	if (hasUpgrade("subs", 12)) gain = gain.times(upgradeEffect("subs", 12))
 	if (hasUpgrade("subs", 13)) gain = gain.times(upgradeEffect("subs", 13))
-	gain = gain.times(tmp.hexzd.effect)
+	gain = gain.times(player.hexzd.points.pow(0.25).add(1))
     if (hasUpgrade("hexzd", 11)) gain = gain.times(3)
 	if (hasUpgrade("subs", 22)) gain = gain.pow(1.05)
 	return gain

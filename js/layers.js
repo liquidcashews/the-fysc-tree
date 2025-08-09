@@ -18,7 +18,7 @@ addLayer("subs", {
         mult = new Decimal(1)
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
-        mult = mult.times(tmp.hexzd.effect)
+        mult = mult.times(player.hexzd.points.pow(0.25).add(1))
         return mult
     },
     gainExp()
@@ -103,7 +103,7 @@ addLayer("hexzd", {
         color: "#011F98",
         type: "normal",
         startData: {
-            unlocked: player.subs.points.gte(500000),
+            unlocked: false,
             points: new Decimal (0),
         },
         requires: new Decimal (500000),
