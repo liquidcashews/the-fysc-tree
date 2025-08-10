@@ -143,9 +143,9 @@ addLayer("hexzd", {
     12: {
         title: "Hexzd Inflation",
         cost: new Decimal (1),
-        description: "Your FYSC is now inflated! Boost Subscribers and FP based on HEXZD points.",
+        description: "Your FYSC is now inflated! Boost Subscribers and FP based on HEXZD points. (base 1.2x)",
         unlocked() {return (hasUpgrade("hexzd", 11))},
-        effect() {return player[this.layer].points.pow(0.15).add(1.5)},
+        effect() {return player[this.layer].points.pow(0.2).add(1.5)},
         effectDisplay() {return format(this.effect()) + "x"}
         },
         13: {
@@ -154,5 +154,16 @@ addLayer("hexzd", {
           description: "You can now stream 24/7, which is making you passively gain 25% of your Subscribers every second.",
           unlocked() {return (hasUpgrade("hexzd", 12))},
         },
+        21: {
+          title: "Watch Time Grinding",
+          cost: new Decimal (5),
+          description: "You are gaining more watch time, so you gain Subscriber gains based on time on reset.",
+          unlocked() {return (hasUpgrade("hexzd", 13))},
+          effect() {
+                let chessbattleadvanced = new Decimal(player.subcount.resetTime)
+                return chessbattleadvanced.pow(0.275).add(1)
+            },
+          effectDisplay() {return format(this.effect()) + "!disstrack ja"},
+            },
     }, })
                 
