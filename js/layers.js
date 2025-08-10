@@ -30,6 +30,11 @@ addLayer("subs", {
     hotkeys: [
         {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    passiveGeneration() {
+        let brainrot = new Decimal(0);
+        if (hasUpgrade("hexzd", 13)) brainrot = new Decimal(0.25)
+        return brainrot;
+    },
     softcap: new Decimal (1e150),
     softcapPower: new Decimal (0.45),
     layerShown() {return true},
@@ -109,6 +114,7 @@ addLayer("hexzd", {
     resource: "hexzd points", // Name of prestige currency
     baseResource: "subscribers", // Name of resource prestige is based on
     exponent: 0.3,
+    branches: ["subs"],
     position: 0,
     baseAmount() {return player.subs.points }, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -136,12 +142,17 @@ addLayer("hexzd", {
         },
     12: {
         title: "Hexzd Inflation",
-        cost: new Decimal (0),
-        description: "Your FYSC is also inflated! Boost Subscribers and FP based on HEXZD points.",
+        cost: new Decimal (1),
+        description: "Your FYSC is now inflated! Boost Subscribers and FP based on HEXZD points.",
         unlocked() {return (hasUpgrade("hexzd", 11))},
-        effect() {return player[this.layer].points.pow(0.25).add(1)},
+        effect() {return player[this.layer].points.pow(0.15).add(1.5)},
         effectDisplay() {return format(this.effect()) + "x"}
         },
+        13: {
+          title: "24/7 Streaming",
+          cost: new Decimal (3),
+          description: "You can now stream 24/7, which is making you passively gain 25% of your Subscribers every second.",
+          unlocked() {return (hasUpgrade("hexzd", 12))},
         },
-    }, )
+    }, })
                 
