@@ -161,7 +161,7 @@ addLayer("hexzd", {
           description: "You are gaining more watch time, so your Subscribers are boosted based on time on reset.",
           unlocked() {return (hasUpgrade("hexzd", 13))},
           effect() {
-                let chessbattleadvanced = new Decimal(player.subcount.resetTime)
+                let chessbattleadvanced = new Decimal(player.hexzd.resetTime)
                 return chessbattleadvanced.pow(0.275).add(1)
             },
           effectDisplay() {return format(this.effect()) + "x"},
