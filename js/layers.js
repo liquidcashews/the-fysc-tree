@@ -110,7 +110,7 @@ addLayer("hexzd", {
     baseResource: "subscribers", // Name of resource prestige is based on
     exponent: 0.3,
     position: 0,
-    baseAmount() {return player.subs; }, // Get the current amount of baseResource
+    baseAmount() {return player.subs.points }, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainMult() { // Calculate the multiplier for main currency from bonuses
         return new Decimal(1)
