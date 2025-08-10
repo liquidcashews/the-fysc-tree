@@ -18,7 +18,7 @@ addLayer("subs", {
         mult = new Decimal(1)
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
-        mult = mult.times(player.hexzd.points.pow(0.25).add(1))
+        if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
         return mult
     },
     gainExp()
@@ -129,11 +129,19 @@ addLayer("hexzd", {
     11: {
           title: "Make your layout custom made",
           cost: new Decimal (0),
-          description: "Bro Copilot shut the he- I mean boost fysc players by x3 because your layout looks better",
+          description: "Bro Copilot shut the he- I mean boost fysc players by x3 because your layout looks better.",
           unlocked: true,
           effect() {return new Decimal(3)},
           effectDisplay() {return "3x"},
-            },
+        },
+    12: {
+        title: "Hexzd Inflation",
+        cost: new Decimal (0),
+        description: "Your FYSC is also inflated! Boost Subscribers and FP based on HEXZD points.",
+        unlocked() {return (hasUpgrade("hexzd", 11))},
+        effect() {return player[this.layer].points.pow(0.25).add(1)},
+        effectDisplay() {return format(this.effect()) + "x"}
+        },
         },
     }, )
                 
