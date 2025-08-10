@@ -19,6 +19,7 @@ addLayer("subs", {
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
+        if (hasUpgrade("hexzd", 21)) mult = mult.times(upgradeEffect("hexzd", 21))
         return mult
     },
     gainExp()
@@ -157,13 +158,13 @@ addLayer("hexzd", {
         21: {
           title: "Watch Time Grinding",
           cost: new Decimal (5),
-          description: "You are gaining more watch time, so you gain Subscriber gains based on time on reset.",
+          description: "You are gaining more watch time, so your Subscribers are boosted based on time on reset.",
           unlocked() {return (hasUpgrade("hexzd", 13))},
           effect() {
                 let chessbattleadvanced = new Decimal(player.subcount.resetTime)
                 return chessbattleadvanced.pow(0.275).add(1)
             },
-          effectDisplay() {return format(this.effect()) + "!disstrack ja"},
+          effectDisplay() {return format(this.effect()) + "x"},
             },
     }, })
                 
