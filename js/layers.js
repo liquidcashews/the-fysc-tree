@@ -19,7 +19,7 @@ addLayer("subs", {
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
-        if (hasUpgrade("hexzd", 21)) mult = mult.times(upgradeEffect("hexzd", 21))
+        if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 21))
         return mult
     },
     gainExp()
@@ -120,7 +120,9 @@ addLayer("hexzd", {
     baseAmount() {return player.subs.points }, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        return new Decimal(1)
+        let yum = new Decimal (1)
+        if (hasUpgrade("hexzd", 15)) yum = yum.times(upgradeEffect("hexzd", 15))
+        return yum
     },
     gainExp()
     {
@@ -144,7 +146,7 @@ addLayer("hexzd", {
     12: {
         title: "Hexzd Inflation",
         cost: new Decimal (1),
-        description: "Your FYSC is now inflated! Boost Subscribers and FP based on HEXZD points. (base 1.2x)",
+        description: "Your FYSC is now inflated! Boost Subscribers and FP based on HEXZD points. (base 1.5x)",
         unlocked() {return (hasUpgrade("hexzd", 11))},
         effect() {return player[this.layer].points.pow(0.2).add(1.5)},
         effectDisplay() {return format(this.effect()) + "x"}
@@ -155,7 +157,7 @@ addLayer("hexzd", {
           description: "You can now stream 24/7, which is making you passively gain 25% of your Subscribers every second.",
           unlocked() {return (hasUpgrade("hexzd", 12))},
         },
-        21: {
+        14: {
           title: "Watch Time Grinding",
           cost: new Decimal (5),
           description: "You are gaining more watch time, so your Subscribers are boosted based on time on reset.",
@@ -166,5 +168,13 @@ addLayer("hexzd", {
             },
           effectDisplay() {return format(this.effect()) + "x"},
             },
+        15: {
+        title: "Inflating Inflation",
+        cost: new Decimal (15),
+        description: "Your Hexzd Inflation is so MASSIVE that HP boosts itself. (base 1.25x)",
+        unlocked() {return (hasUpgrade("hexzd", 11))},
+        effect() {return player[this.layer].points.pow(0.3).add(1.25)},
+        effectDisplay() {return format(this.effect()) + "x"}
+        },
     }, })
                 
