@@ -19,7 +19,7 @@ addLayer("subs", {
         if (hasUpgrade("subs", 11)) mult = mult.times(2)
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
-        if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 21))
+        if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 14))
         return mult
     },
     gainExp()
@@ -173,7 +173,7 @@ addLayer("hexzd", {
         cost: new Decimal (15),
         description: "Your Hexzd Inflation is so MASSIVE that HP boosts itself. (base 1.25x)",
         unlocked() {return (hasUpgrade("hexzd", 11))},
-        effect() {return player[this.layer].points.pow(0.3).add(1.25)},
+        effect() {return player[this.layer].points.pow(0.225).add(1.25)},
         effectDisplay() {return format(this.effect()) + "x"}
         },
     }, })
