@@ -81,11 +81,12 @@ addLayer("subs", {
     },
         22: {
             title: "Start coding CodeMark TradeName",
-            cost: new Decimal (1000),
+         cost: new Decimal (1000),
             description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear",
             unlocked() {return (hasUpgrade("subs", 21))},
             effect() {
                 let ret = player.subs.points.add(1).log10().pow(1.35)
+                if (hasUpgrade("hexzd", 21)) ret = ret.pow(1.5)
                 return ret
             },
              effectDisplay () {return format (this.effect())+"x"},
@@ -148,16 +149,18 @@ addLayer("hexzd", {
         cost: new Decimal (1),
         description: "Your FYSC is now inflated! Boost Subscribers and FP based on HEXZD points. (base 1.5x)",
         unlocked() {return (hasUpgrade("hexzd", 11))},
-        effect() {return player[this.layer].points.pow(0.2).add(1.5)},
+        effect() {let lol = player[this.layer].points.pow(0.2).add(1.5)
+            if (hasUpgrade("hexzd", 22)) lol = lol.times(upgradeEffect(this.layer, 22))
+        },
         effectDisplay() {return format(this.effect()) + "x"}
         },
-        13: {
+    13: {
           title: "24/7 Streaming",
           cost: new Decimal (3),
           description: "You can now stream 24/7, which is making you passively gain 25% of your Subscribers every second.",
           unlocked() {return (hasUpgrade("hexzd", 12))},
         },
-        14: {
+    14: {
           title: "Watch Time Grinding",
           cost: new Decimal (5),
           description: "You are gaining more watch time, so your Subscribers are boosted based on time on reset.",
@@ -168,13 +171,29 @@ addLayer("hexzd", {
             },
           effectDisplay() {return format(this.effect()) + "x"},
             },
-        15: {
+    15: {
         title: "Inflating Inflation",
         cost: new Decimal (15),
         description: "Your Hexzd Inflation is so MASSIVE that HP boosts itself. (base 1.25x)",
-        unlocked() {return (hasUpgrade("hexzd", 11))},
+        unlocked() {return (hasUpgrade("hexzd", 14))},
         effect() {return player[this.layer].points.pow(0.225).add(1.25)},
-        effectDisplay() {return format(this.effect()) + "x"}
+        effectDisplay() {return format(this.effect()) + "x"},
         },
-    }, })
+    21: {
+        title: "Upgrade inflation?",
+        cost: new Decimal (50),
+        description: "Inflation is so bad it goes to other upgrades. Raise Subscriber Upgrade 22 to the 1.5.",
+        unlocked() {return (hasUpgrade("hexzd", 15))},
+        effect() {return new Decimal (1.5)},
+        effectDisplay() {return "^1.5"},
+        },
+        22: {
+        title: "Inflation Inflation???",
+        cost: new Decimal (200),
+        description: "What is even happening? HP Upgrade 12 is now boosted based on Subscribers.",
+        unlocked() {return (hasUpgrade("hexzd", 21))},
+        effect() {return player[this.layer].points.pow(0.05).add(1)},
+        effectDisplay() {return format(this.effect()) + "x"}
+    },
+} } )
                 
