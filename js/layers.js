@@ -134,7 +134,7 @@ addLayer("hexzd", {
     ],
     softcap: new Decimal (1e200),
     softcapPower: new Decimal (0.45),
-    layerShown() {return true},
+    layerShown() {return (hasUpgrade("subs", 23))},
     upgrades: {
     11: {
           title: "Make your layout custom made",
