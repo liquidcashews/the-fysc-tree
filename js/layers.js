@@ -151,6 +151,7 @@ addLayer("hexzd", {
         unlocked() {return (hasUpgrade("hexzd", 11))},
         effect() {let lol = player[this.layer].points.pow(0.2).add(1.5)
             if (hasUpgrade("hexzd", 22)) lol = lol.times(upgradeEffect(this.layer, 22))
+                return lol
         },
         effectDisplay() {return format(this.effect()) + "x"}
         },
