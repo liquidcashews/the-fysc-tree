@@ -9,7 +9,7 @@ var layoutInfo = {
 }
 
 
-// A "ghost" layer which offsets other layers in the tree
+// A "ghost" layer which offsets other layers in the tree balal
 addNode("blank", {
     layerShown: "ghost",
 }, 

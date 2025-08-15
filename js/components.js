@@ -9,7 +9,7 @@ function loadVue() {
 		`
 	})
 
-// data = a function returning the content (actually HTML)
+// data = a function returning the content (actually HTML) a
 	Vue.component('raw-html', {
 			props: ['layer', 'data'],
 			template: `

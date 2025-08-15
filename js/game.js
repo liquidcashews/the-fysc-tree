@@ -1,7 +1,7 @@
 var player;
 var needCanvasUpdate = true;
 
-// Don't change this
+// Don't change this.
 const TMT_VERSION = {
 	tmtNum: "2.7",
 	tmtName: "Δ"
