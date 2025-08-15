@@ -193,7 +193,7 @@ addLayer("hexzd", {
         cost: new Decimal (200),
         description: "What is even happening? HP Upgrade 12 is now boosted based on Subscribers.",
         unlocked() {return (hasUpgrade("hexzd", 21))},
-        effect() {return player[this.layer].points.pow(0.05).add(1)},
+        effect() {return player.subs.points.pow(0.065).add(1)},
         effectDisplay() {return format(this.effect()) + "x"}
     },
 } } )
