@@ -116,6 +116,7 @@ addLayer("hexzd", {
     resource: "hexzd points", // Name of prestige currency
     baseResource: "subscribers", // Name of resource prestige is based on
     exponent: 0.3,
+    layerShown() {return hasUpgrade("subs", 23) || player.hexzd.unlocked},
     branches: ["subs"],
     position: 0,
     baseAmount() {return player.subs.points }, // Get the current amount of baseResource
