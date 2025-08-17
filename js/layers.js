@@ -108,8 +108,8 @@ addLayer("hexzd", {
     symbol: "H",
     row: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: false,
-		points: new Decimal(500000),
+        unlocked() {hasUpgrade("subs", 23)},
+		points: new Decimal(0),
     }},
     color: "#011F98",
     requires: new Decimal(500000), // Can be a function that takes requirement increases into account
@@ -134,7 +134,6 @@ addLayer("hexzd", {
     ],
     softcap: new Decimal (1e200),
     softcapPower: new Decimal (0.45),
-    layerShown() {return (hasUpgrade("subs", 23))},
     upgrades: {
     11: {
           title: "Make your layout custom made",
