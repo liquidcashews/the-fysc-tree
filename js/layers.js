@@ -215,12 +215,12 @@ buyables: { // Thanks Epic Stat Battles :)
 
             // Unlock condition
             unlocked() {
-                return (hasUpgrade("hexzd", 23))  // Buyable unlocks when player has 5 infinity points
+                return (hasUpgrade("hexzd", 23))  // Buyable unlocks when player has H23
             },
 
             // Effect of the buyable
             effect(x) {
-                let base = x.pow(0.3).div(50).add(1); // Original effect formula
+                let base = x.pow(0.9).div(50).add(1); // Original effect formula
                 return base
             },
             canAfford() { return player.hexzd.points.gte(this.cost()) },
@@ -230,7 +230,7 @@ buyables: { // Thanks Epic Stat Battles :)
             },
             // Display the effect
             display() {
-                let amt = getBuyableAmount("infi", 11) // Current level of the buyable
+                let amt = getBuyableAmount("hexzd", 11) // Current level of the buyable
                 let cost = this.cost(amt) // Cost for the next level
                 let effect = this.effect(amt) // Current effect of the buyable
                 return `
