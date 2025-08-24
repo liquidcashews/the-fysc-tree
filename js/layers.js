@@ -177,7 +177,8 @@ addLayer("hexzd", {
         cost: new Decimal (15),
         description: "Your Hexzd Inflation is so MASSIVE that HP boosts itself. (base 1.25x)",
         unlocked() {return (hasUpgrade("hexzd", 14))},
-        effect() {return player[this.layer].points.pow(0.225).add(1.25)},
+        effect() {
+        return player[this.layer].points.pow(0.225).add(1.25)},
         effectDisplay() {return format(this.effect()) + "x"},
         },
     21: {
@@ -193,8 +194,49 @@ addLayer("hexzd", {
         cost: new Decimal (200),
         description: "What is even happening? HP Upgrade 12 is now boosted based on Subscribers.",
         unlocked() {return (hasUpgrade("hexzd", 21))},
-        effect() {return player.subs.points.pow(0.065).add(1)},
-        effectDisplay() {return format(this.effect()) + "x"}
+        effect() {let ret = player.subs.points.pow(0.065).add(1)
+            ret = ret.pow(buyableEffect("hexzd", 11))
+            return ret
+        },
+        effectDisplay() {return format(this.effect()) + "x"}, },
+        23: {
+        title: "Buyable Inflation????",
+        cost: new Decimal (500),
+        description: "Unlock a buyable.",
+        unlocked() {return (hasUpgrade("hexzd", 22))},
+        effectDisplay: "finding new ways to put inflation",
     },
-} } )
+},
+buyables: { // Thanks Epic Stat Battles :)
+        11: {
+            title: "Inflate the Inflate",
+            description: "Inflate Inflation Inflation.",
+            cost(x) {return x.pow(x.div(2.5)).times(500)},  // The cost formula
+
+            // Unlock condition
+            unlocked() {
+                return (hasUpgrade("hexzd", 23))  // Buyable unlocks when player has 5 infinity points
+            },
+
+            // Effect of the buyable
+            effect(x) {
+                let base = x.pow(0.3).div(50).add(1); // Original effect formula
+                return base
+            },
+            canAfford() { return player.hexzd.points.gte(this.cost()) },
+            buy() {
+                player.hexzd.points = player.hexzd.points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            // Display the effect
+            display() {
+                let amt = getBuyableAmount("infi", 11) // Current level of the buyable
+                let cost = this.cost(amt) // Cost for the next level
+                let effect = this.effect(amt) // Current effect of the buyable
+                return `
+                    ${this.description}<br>
+                    Level: ${format(amt)}<br>
+                    Effect: x${format(effect)}<br>
+                    Cost: ${format(cost)} Infinity Points`
+            }, } } }, )
                 
