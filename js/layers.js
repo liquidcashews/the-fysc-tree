@@ -37,6 +37,13 @@ addLayer("subs", {
         if (hasUpgrade("hexzd", 13)) brainrot = new Decimal(0.25)
         return brainrot;
     },
+    infoboxes:{
+            m: {
+                title: "Context",
+                titleStyle: {'color': '#000000'},
+                body: "Welcome to The FYSC Tree! In case you don't know what that means, FYSC is a YouTube interactive live stream that you can post fake videos for fake subs, originally made by Straight from MG. The goal of this game is to make the best FYSC. Good luck!",
+            }
+        },
     softcap: new Decimal (1e150),
     softcapPower: new Decimal (0.45),
     layerShown() {return true},
@@ -123,8 +130,8 @@ addLayer("hexzd", {
     infoboxes:{
             m: {
                 title: "Context",
-                titleStyle: {'color': '#FE0000'},
-                body: "Welcome to The FYSC Tree! In case you don't know what that means, FYSC is a YouTube interactive live stream that you can post fake videos for fake subs, originally made by Straight from MG. The goal of this game is to make the best FYSC. Good luck!",
+                titleStyle: {'color': '#FFFFFF'},
+                body: "HEXZD is the first FYSC provider in this row. They're very known for inflating the sub count (Example: First place in Season 1 has 200B+ subs). This layer inflates the game by a noticable amount.",
             }
         },
     baseAmount() {return player.subs.points }, // Get the current amount of baseResource
@@ -132,6 +139,7 @@ addLayer("hexzd", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         let yum = new Decimal (1)
         if (hasUpgrade("hexzd", 15)) yum = yum.times(upgradeEffect("hexzd", 15))
+        if (hasUpgrade("hexzd", 24)) yum = yum.times(upgradeEffect(this.layer, 24))
         return yum
     },
     gainExp()
@@ -146,7 +154,7 @@ addLayer("hexzd", {
     upgrades: {
     11: {
           title: "Make your layout custom made",
-          cost: new Decimal (0),
+          cost: new Decimal (1),
           description: "Bro Copilot shut the he- I mean boost fysc players by x3 because your layout looks better.",
           unlocked: true,
           effect() {return new Decimal(3)},
@@ -214,6 +222,14 @@ addLayer("hexzd", {
         unlocked() {return (hasUpgrade("hexzd", 22))},
         effectDisplay: "finding new ways to put inflation",
     },
+    24: {
+        title: "Ew, genericness",
+        cost: new Decimal (2000),
+        description: "Multiply HEXZD Points by Subscribers (thankfully logarithimically)",
+        effect() {return player.subs.points.add(1).log10().pow(1.15)},
+        unlocked() {return (hasUpgrade("hexzd", 23))},
+        effectDisplay() {return format(this.effect()) + "x"},
+    },
 },
 buyables: { // Thanks Epic Stat Battles :)
         11: {
@@ -228,7 +244,7 @@ buyables: { // Thanks Epic Stat Battles :)
 
             // Effect of the buyable
             effect(x) {
-                let base = x.pow(0.9).div(50).add(1); // Original effect formula
+                let base = x.pow(0.9).times(0.03).add(1); // Original effect formula
                 return base
             },
             canAfford() { return player.hexzd.points.gte(this.cost()) },
