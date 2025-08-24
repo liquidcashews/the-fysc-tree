@@ -120,6 +120,13 @@ addLayer("hexzd", {
     layerShown() {return hasUpgrade("subs", 23) || player.hexzd.total.gte(1)},
     branches: ["subs"],
     position: 0,
+    infoboxes:{
+            m: {
+                title: "Context",
+                titleStyle: {'color': '#FE0000'},
+                body: "Welcome to The FYSC Tree! In case you don't know what that means, FYSC is a YouTube interactive live stream that you can post fake videos for fake subs, originally made by Straight from MG. The goal of this game is to make the best FYSC. Good luck!",
+            }
+        },
     baseAmount() {return player.subs.points }, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainMult() { // Calculate the multiplier for main currency from bonuses
