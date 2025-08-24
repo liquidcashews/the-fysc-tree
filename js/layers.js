@@ -4,7 +4,8 @@ addLayer("subs", {
     row: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-		points: new Decimal(0),
+		points: new Decimal (0),
+        total: new Decimal (0),
     }},
     color: "#FF0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -116,7 +117,7 @@ addLayer("hexzd", {
     resource: "hexzd points", // Name of prestige currency
     baseResource: "subscribers", // Name of resource prestige is based on
     exponent: 0.3,
-    layerShown() {return hasUpgrade("subs", 23) || player.hexzd.unlocked},
+    layerShown() {return hasUpgrade("subs", 23) || player.hexzd.total.gte(1)},
     branches: ["subs"],
     position: 0,
     baseAmount() {return player.subs.points }, // Get the current amount of baseResource
@@ -236,7 +237,7 @@ buyables: { // Thanks Epic Stat Battles :)
                 return `
                     ${this.description}<br>
                     Level: ${format(amt)}<br>
-                    Effect: x${format(effect)}<br>
+                    Effect: ^${format(effect)}<br>
                     Cost: ${format(cost)} Infinity Points`
             }, } } }, )
                 
