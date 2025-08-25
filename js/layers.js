@@ -274,15 +274,16 @@ buyables: { // Thanks Epic Stat Battles :)
                     Level: ${format(amt)}<br>
                     Effect: ^${format(effect)}<br>
                     Cost: ${format(cost)} Infinity Points`
-            }, } },
+            }, } }, 
         challenges: {
         11: {
             name: "Procrastination",
             challengeDescription: "FP gain is square rooted due to the lack of updates.",
             goalDescription: "Surpass Earth's population in FP. (≈8 billion)",
             rewardDescription: "Unlock the second FYSC provider.",
-            unlocked() { return hasUpgrade("hexzd", 25) },
+            unlocked() { return (hasUpgrade("hexzd", 25)) },
             canComplete: function() { return player.points.gte(8.5e9) },
         }
-        }, }, )
+        }, 
+     }, )
                 
