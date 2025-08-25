@@ -60,10 +60,16 @@ addLayer("subs", {
             unlocked() {return (hasUpgrade("subs", 11))},
             effect() {
                 let ret = player.subs.points.add(1).pow(0.45)
-                if (ret.gte("1000000")) ret = ret.sqrt().times("1000")
+                if (ret.gte(1000000)) ret = ret.sqrt().times("1000000".pow(0.45))
                     return ret;
             },
-            effectDisplay() {return format (this.effect())+"x"},
+            effectDisplay() {
+            let softcap1 = player.subs.points.gte(1e6)
+            let base = format (this.effect())+"x"
+            if (softcap1) {
+                display += " (softcapped)"
+            }
+            return base
         },
         13: {
             title: "Just Self-Synergy",
@@ -110,7 +116,7 @@ addLayer("subs", {
             effectDisplay() {return "^"+format(this.effect())},
         },
     }
-    }, )
+    }, } )
 addLayer("hexzd", {
     name: "hexzd points", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "H",
@@ -230,6 +236,12 @@ addLayer("hexzd", {
         unlocked() {return (hasUpgrade("hexzd", 23))},
         effectDisplay() {return format(this.effect()) + "x"},
     },
+    25: {
+        title: "The Worst Thing of All",
+        cost: new Decimal (50000),
+        description: "x3 FP and unlock a challenge.",
+        unlocked() {return (hasUpgrade("hexzd", 24))},
+    },
 },
 buyables: { // Thanks Epic Stat Battles :)
         11: {
@@ -262,5 +274,20 @@ buyables: { // Thanks Epic Stat Battles :)
                     Level: ${format(amt)}<br>
                     Effect: ^${format(effect)}<br>
                     Cost: ${format(cost)} Infinity Points`
-            }, } } }, )
+            }, } },
+        challenges: {
+        11: {
+            name: "Procrastination",
+            challengeDescription: "FP gain is square rooted due to the lack of updates.",
+            goalDescription: "Surpass Earth's population in FP. (≈8 billion)",
+            rewardDescription: "Unlock the second FYSC provider.",
+            unlocked() { return hasUpgrade("hexzd", 25) },
+            canComplete: function() { return player.points.gte(8.5e9) },
+            rewardEffect() {
+            return "placeholder"
+            },
+            rewardDisplay() {
+                return "Unlocked: CodeName TradeMark";
+            },}
+        }, }, )
                 

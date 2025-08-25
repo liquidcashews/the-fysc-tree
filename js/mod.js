@@ -1,6 +1,6 @@
 let modInfo = {
 	name: "The FYSC Tree",
-	author: "liquidation cashewdations",
+	author: "liquidcashews",
 	pointsName: "fysc players",
 	modFiles: ["layers.js", "tree.js"],
 
@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.123",
-	name: "almost there",
+	num: "1.14",
+	name: "challenge 1",
 }
 
 let changelog = `<h1>Changelog:</h1><br>,
@@ -46,6 +46,7 @@ function getPointGen() {
     if (hasUpgrade("hexzd", 11)) gain = gain.times(3)
 	if (hasUpgrade("hexzd", 12)) gain = gain.times(upgradeEffect("hexzd", 12))
 	if (hasUpgrade("subs", 22)) gain = gain.pow(1.05)
+	if (inChallenge("hexzd", 11)) gain = gain.sqrt()
 	return gain
 }
 
@@ -59,7 +60,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("3.22e5209"))
+	return player.points.gte(new Decimal(e1000000000))
 }
 
 
