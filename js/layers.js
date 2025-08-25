@@ -60,7 +60,7 @@ addLayer("subs", {
             unlocked() {return (hasUpgrade("subs", 11))},
             effect() {
                 let ret = player.subs.points.add(1).pow(0.45)
-                if (ret.gte(1000000)) ret = ret.sqrt().times("1000000".pow(0.45))
+                if (ret.gte(1000000)) ret = ret.sqrt().times(new Decimal (1e6).pow(0.45))
                     return ret;
             },
             effectDisplay() {
