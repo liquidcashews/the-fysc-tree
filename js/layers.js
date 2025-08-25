@@ -283,11 +283,6 @@ buyables: { // Thanks Epic Stat Battles :)
             rewardDescription: "Unlock the second FYSC provider.",
             unlocked() { return hasUpgrade("hexzd", 25) },
             canComplete: function() { return player.points.gte(8.5e9) },
-            rewardEffect() {
-            return "placeholder"
-            },
-            rewardDisplay() {
-                return "m"
-            },}
+        }
         }, }, )
                 
