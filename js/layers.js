@@ -67,10 +67,10 @@ addLayer("subs", {
             let softcap1 = player.subs.points.gte(1e6)
             let base = format (this.effect())+"x"
             if (softcap1) {
-                display += " (softcapped)"
+                base += " (softcapped)"
             }
             return base
-        },
+        }, },
         13: {
             title: "Just Self-Synergy",
             description: "Boost FP based on FP. (x^0.35)",
@@ -116,7 +116,7 @@ addLayer("subs", {
             effectDisplay() {return "^"+format(this.effect())},
         },
     }
-    }, } )
+    }, )
 addLayer("hexzd", {
     name: "hexzd points", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "H",
