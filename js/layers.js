@@ -287,7 +287,7 @@ buyables: { // Thanks Epic Stat Battles :)
             return "placeholder"
             },
             rewardDisplay() {
-                return "Unlocked: CodeName TradeMark";
+                return "m"
             },}
         }, }, )
                 
