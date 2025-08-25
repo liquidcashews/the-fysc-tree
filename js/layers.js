@@ -72,7 +72,7 @@ addLayer("subs", {
             title: "Just Self-Synergy",
             description: "Boost FP based on FP. (x^0.35)",
             cost: new Decimal (100),
-            unlocked() {return (hasUpgrade("subs", 12))},
+            unlocked() {return true},
             effect() {
                 let ret = player.points.add(1).pow(0.35)
                 if (ret.gte("1e30")) ret = ret.pow(0.2).times("1e24")
