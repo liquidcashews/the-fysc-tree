@@ -66,9 +66,6 @@ addLayer("subs", {
             effectDisplay() {
             let softcap1 = player.subs.points.gte(1e6)
             let base = format (this.effect())+"x"
-            if (softcap1) {
-                base += " (softcapped)"
-            }
             return base
         }, },
         13: {
