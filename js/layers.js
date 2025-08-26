@@ -238,7 +238,7 @@ addLayer("hexzd", {
     25: {
         title: "The Worst Thing of All",
         cost: new Decimal (50000),
-        description: "x3 FP and unlock a challenge.",
+        description: "x4 FP and unlock a challenge.",
         unlocked() {return (hasUpgrade("hexzd", 24))},
     },
 },
