@@ -49,7 +49,7 @@ function getPointGen() {
 	if (hasUpgrade("hexzd", 12)) gain = gain.times(upgradeEffect("hexzd", 12))
 	if (hasUpgrade("subs", 22)) gain = gain.pow(1.05)
 	if (inChallenge("hexzd", 11)) gain = gain.pow(0.5)
-	gain = gain.times(eff.ctrecovery)
+	gain = gain.times(player.ct.points.pow(0.65))
 	return gain
 }
 
