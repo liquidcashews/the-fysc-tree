@@ -1,4 +1,4 @@
-const { useEffect } = require("react")
+
 
 let modInfo = {
 	name: "The FYSC Tree",
