@@ -307,7 +307,7 @@ buyables: { // Thanks Epic Stat Battles :)
             ctrecovery: (player.ct.points.pow(0.65))
         }},
         effectDescription() { // Optional text to describe the effects
-            eff = this.effect();
+            eff = this.effect()
             return "which are boosting previous currencies by "+format(eff.ctrecovery)
         },
     baseAmount() {return player.hexzd.points; }, // Get the current amount of baseResource
