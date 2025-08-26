@@ -272,7 +272,7 @@ buyables: { // Thanks Epic Stat Battles :)
                     ${this.description}<br>
                     Level: ${format(amt)}<br>
                     Effect: ^${format(effect)}<br>
-                    Cost: ${format(cost)} Infinity Points`
+                    Cost: ${format(cost)} HEXZD Points`
             }, } }, 
         challenges: {
         11: {
@@ -296,10 +296,10 @@ buyables: { // Thanks Epic Stat Battles :)
 		points: new Decimal (0),
         total: new Decimal (0),
     }},
-    color: "#000000",
+    color: "#005500",
     requires: new Decimal(10000000), // Can be a function that takes requirement increases into account
-    resource: "subscribers", // Name of prestige currency
-    baseResource: "fysc players", // Name of resource prestige is based on
+    resource: "ct episodes", // Name of prestige currency
+    baseResource: "hexzd points", // Name of resource prestige is based on
     exponent: 0.5,
     position: 2,
     effect() {
@@ -319,11 +319,10 @@ buyables: { // Thanks Epic Stat Battles :)
     gainExp()
     {
         exponent = new Decimal (1)
-        if (hasUpgrade("subs", 21)) exponent = exponent.times(1.15)
         return exponent
     },
     hotkeys: [
-        {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "c", description: "c: reset for CT subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     passiveGeneration() {
         let brainrot = new Decimal(0);
