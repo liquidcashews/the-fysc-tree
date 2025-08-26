@@ -21,6 +21,7 @@ addLayer("subs", {
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
         if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 14))
+        mult = mult.times(eff.ctrecovery)
         return mult
     },
     gainExp()
@@ -123,7 +124,7 @@ addLayer("hexzd", {
 		points: new Decimal(0),
     }},
     color: "#011F98",
-    requires: new Decimal(500000), // Can be a function that takes requirement increases into account
+    requires: new Decimal(100000), // Can be a function that takes requirement increases into account
     resource: "hexzd points", // Name of prestige currency
     baseResource: "subscribers", // Name of resource prestige is based on
     exponent: 0.3,
@@ -143,6 +144,7 @@ addLayer("hexzd", {
         let yum = new Decimal (1)
         if (hasUpgrade("hexzd", 15)) yum = yum.times(upgradeEffect("hexzd", 15))
         if (hasUpgrade("hexzd", 24)) yum = yum.times(upgradeEffect(this.layer, 24))
+        yum = yum.times(eff.ctrecovery)
         return yum
     },
     gainExp()
@@ -283,4 +285,55 @@ buyables: { // Thanks Epic Stat Battles :)
         }
         }, 
      }, )
-                
+     addLayer("ct", {
+    name: "Codename Trademark episodes", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "CT", // This appears on the layer's node. Default is the id with the first letter capitalized
+    row: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    branches: ["hexzd"],
+    layerShown () {return (hasChallenge("hexzd", 11))},
+    startData() { return {
+        unlocked() {(hasChallenge("hexzd", 11))},
+		points: new Decimal (0),
+        total: new Decimal (0),
+    }},
+    color: "#000000",
+    requires: new Decimal(10000000), // Can be a function that takes requirement increases into account
+    resource: "subscribers", // Name of prestige currency
+    baseResource: "fysc players", // Name of resource prestige is based on
+    exponent: 0.5,
+    position: 2,
+    effect() {
+            return { // Formulas for any boosts inherent to resources in the layer. Can return a single value instead of an object if there is just one effect
+            ctrecovery: (player.ct.points.pow(0.65))
+        }},
+        effectDescription() { // Optional text to describe the effects
+            eff = this.effect();
+            return "which are boosting previous currencies by "+format(eff.ctrecovery)
+        },
+    baseAmount() {return player.hexzd.points; }, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+    },
+    gainExp()
+    {
+        exponent = new Decimal (1)
+        if (hasUpgrade("subs", 21)) exponent = exponent.times(1.15)
+        return exponent
+    },
+    hotkeys: [
+        {key: "s", description: "s: Reset for subs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    passiveGeneration() {
+        let brainrot = new Decimal(0);
+        return brainrot;
+    },
+    infoboxes:{
+            m: {
+                title: "Context",
+                titleStyle: {'color': '#FFFFFF'},
+                body: "Codename Trademark is the second FYSC provider and is hosted by Stat Wars. It is very different from HEXZD, as it is not as inflated.",
+            }
+        },
+    } )      

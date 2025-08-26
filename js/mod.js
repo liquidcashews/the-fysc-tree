@@ -1,3 +1,5 @@
+const { useEffect } = require("react")
+
 let modInfo = {
 	name: "The FYSC Tree",
 	author: "liquidcashews",
@@ -12,8 +14,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.14c",
-	name: "challenge 1",
+	num: "1.2",
+	name: "Codename trademark",
 }
 
 let changelog = `<h1>Changelog:</h1><br>,
@@ -47,6 +49,7 @@ function getPointGen() {
 	if (hasUpgrade("hexzd", 12)) gain = gain.times(upgradeEffect("hexzd", 12))
 	if (hasUpgrade("subs", 22)) gain = gain.pow(1.05)
 	if (inChallenge("hexzd", 11)) gain = gain.pow(0.5)
+	gain = gain.times(eff.ctrecovery)
 	return gain
 }
 
