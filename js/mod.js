@@ -14,8 +14,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.2",
-	name: "Codename trademark",
+	num: "1.21",
+	name: "Codename trademark 11",
 }
 
 let changelog = `<h1>Changelog:</h1><br>,
@@ -48,7 +48,8 @@ function getPointGen() {
     if (hasUpgrade("hexzd", 11)) gain = gain.times(3)
 	if (hasUpgrade("hexzd", 12)) gain = gain.times(upgradeEffect("hexzd", 12))
 	if (hasUpgrade("hexzd", 25)) gain = gain.times(4)
-	if (hasUpgrade("subs", 22)) gain = gain.pow(1.05)
+	if (hasUpgrade("subs", 23)) gain = gain.pow(1.05)
+	if (hasUpgrade("ct", 11)) gain = gain.times(5)
 	if (inChallenge("hexzd", 11)) gain = gain.pow(0.5)
 	gain = gain.times(player.ct.points.pow(0.65).add(1))
 	return gain

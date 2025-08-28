@@ -21,6 +21,7 @@ addLayer("subs", {
         if (hasUpgrade("subs", 22)) mult = mult.times(upgradeEffect(this.layer, 22))
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
         if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 14))
+        if (hasUpgrade("ct", 11)) mult = mult.times(3)
         mult = mult.times(player.ct.points.pow(0.65).add(1))
         return mult
     },
@@ -145,6 +146,7 @@ addLayer("hexzd", {
         if (hasUpgrade("hexzd", 15)) yum = yum.times(upgradeEffect("hexzd", 15))
         if (hasUpgrade("hexzd", 24)) yum = yum.times(upgradeEffect(this.layer, 24))
         yum = yum.times(player.ct.points.pow(0.65).add(1))
+        if (hasUpgrade("ct", 11)) yum = yum.times(2)
         return yum
     },
     gainExp()
@@ -311,7 +313,7 @@ buyables: { // Thanks Epic Stat Battles :)
             return "which are boosting previous currencies by "+format(eff.ctrecovery)
         },
     baseAmount() {return player.hexzd.points; }, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -335,4 +337,13 @@ buyables: { // Thanks Epic Stat Battles :)
                 body: "Codename Trademark is the second FYSC provider and is hosted by Stat Wars. It is very different from HEXZD, as it is not as inflated.",
             }
         },
+        upgrades: {
+    11: {
+          title: "Here we Go Again",
+          cost: new Decimal (1),
+          description: "Here's a dumb static boost! 5x FP, 3x subs, and 2x HP.",
+          unlocked: true,
+          effect() {return new Decimal(3)},
+          effectDisplay() {return "how do i make this an effect"},
+        }, }
     } )      
