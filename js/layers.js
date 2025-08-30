@@ -280,10 +280,10 @@ buyables: { // Thanks Epic Stat Battles :)
         11: {
             name: "Procrastination",
             challengeDescription: "FP gain is square rooted due to the lack of updates.",
-            goalDescription: "Surpass Earth's population in FP. (≈8 billion)",
+            goalDescription: "Get 10 million FYSC players.",
             rewardDescription: "Unlock the second FYSC provider.",
             unlocked() { return (hasUpgrade("hexzd", 25)) },
-            canComplete() {return player.points.gte(8.5e9) },
+            canComplete() {return player.points.gte(1e7) },
         }
         }, 
      }, )
