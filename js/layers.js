@@ -61,7 +61,7 @@ addLayer("subs", {
             cost: new Decimal(10),
             unlocked() {return (hasUpgrade("subs", 11))},
             effect() {
-                let ret = player.subs.points.add(1).log4().add(1)
+                let ret = player.subs.points.add(1).log(4).add(1)
                     return ret;
             },
             effectDisplay() {
