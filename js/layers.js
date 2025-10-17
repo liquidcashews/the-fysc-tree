@@ -28,7 +28,7 @@ addLayer("subs", {
     gainExp()
     {
         exponent = new Decimal (1)
-        if (hasUpgrade("subs", 21)) exponent = exponent.times(1.15)
+        if (hasUpgrade("subs", 21)) exponent = exponent.times(1.25)
         return exponent
     },
     hotkeys: [
@@ -57,12 +57,11 @@ addLayer("subs", {
         },
         12: {
             title: "Create a forum in the FYSC Discord",
-            description: "Boost Fysc Players based on subs. (x^0.45)",
+            description: "Boost Fysc Players based on subs. (log4(x))",
             cost: new Decimal(10),
             unlocked() {return (hasUpgrade("subs", 11))},
             effect() {
-                let ret = player.subs.points.add(1).pow(0.45)
-                if (ret.gte(1000000)) ret = ret.sqrt().times(new Decimal (1e6).pow(0.45))
+                let ret = player.subs.points.add(1).log4().add(1)
                     return ret;
             },
             effectDisplay() {
@@ -72,11 +71,11 @@ addLayer("subs", {
         }, },
         13: {
             title: "Just Self-Synergy",
-            description: "Boost FP based on FP. (x^0.35)",
-            cost: new Decimal (100),
+            description: "Boost FP based on FP. (log10(x)^1.25)",
+            cost: new Decimal (10),
             unlocked() {return (hasUpgrade(this.layer, 12))},
             effect() {
-                let ret = player.points.add(1).pow(0.35)
+                let ret = player.points.add(1).log10().add(1).pow(1.25)
                 if (ret.gte("1e30")) ret = ret.pow(0.2).times("1e24")
                 return ret
         },
@@ -84,21 +83,21 @@ addLayer("subs", {
         },
         21: {
             title: "Master the power of Lcedit",
-            description: "Nice features, also you added fires! Raise Subscribers to the 1.15, :O",
-            cost: new Decimal (250),
+            description: "Nice features, also you added fires! Raise Subscribers to the 1.15.",
+            cost: new Decimal (50),
             effect()
-            {return new Decimal (1.15)
+            {return new Decimal (1.25)
             },
             unlocked() {return (hasUpgrade("subs", 13))},
-            effectDisplay () {return "^1.15"},
+            effectDisplay () {return "^1.25"},
     },
         22: {
             title: "Start coding CodeMark TradeName",
-         cost: new Decimal (1000),
-            description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear",
+         cost: new Decimal (100),
+            description: "Just a small boost, boost Subs based on Subs. Not inflated yet I swear (log10(x)^1.25)",
             unlocked() {return (hasUpgrade("subs", 21))},
             effect() {
-                let ret = player.subs.points.add(1).log10().pow(1.35)
+                let ret = player.subs.points.add(1).log10().add(1).pow(1.25)
                 if (hasUpgrade("hexzd", 21)) ret = ret.pow(1.5)
                 return ret
             },
@@ -106,13 +105,23 @@ addLayer("subs", {
         },
         23: {
             title: "Lcedit improvements",
-            cost: new Decimal (10000),
-            description: "Now you have a cool header on top, and you found out how to host the website code! Boost FYSC players by ^1.05.",
-            effect() {return new Decimal (1.05)
+            cost: new Decimal (350),
+            description: "Now you have a cool header on top, and you found out how to host the website code! Boost FYSC players by ^1.15.",
+            effect() {return new Decimal (1.15)
                 
             },
             unlocked() {return (hasUpgrade("subs", 22))},
             effectDisplay() {return "^"+format(this.effect())},
+        },
+        31: {
+            title: "Data Saving",
+            cost: new Decimal (1000),
+            description: "Last upgrade until next layer! 3x Subscribers.",
+            effect() {return new Decimal (5)
+                
+            },
+            unlocked() {return (hasUpgrade("subs", 23))},
+            effectDisplay() {return "x"+format(this.effect())},
         },
     }
     }, )
@@ -125,11 +134,11 @@ addLayer("hexzd", {
 		points: new Decimal(0),
     }},
     color: "#011F98",
-    requires: new Decimal(100000), // Can be a function that takes requirement increases into account
+    requires: new Decimal(4000), // Can be a function that takes requirement increases into account
     resource: "hexzd points", // Name of prestige currency
     baseResource: "subscribers", // Name of resource prestige is based on
     exponent: 0.3,
-    layerShown() {return hasUpgrade("subs", 23) || player.hexzd.total.gte(1)},
+    layerShown() {return hasUpgrade("subs", 31) || player.hexzd.total.gte(1)},
     branches: ["subs"],
     position: 0,
     infoboxes:{
@@ -172,7 +181,7 @@ addLayer("hexzd", {
         cost: new Decimal (1),
         description: "Your FYSC is now inflated! Boost Subscribers and FP based on HEXZD points. (base 1.5x)",
         unlocked() {return (hasUpgrade("hexzd", 11))},
-        effect() {let lol = player[this.layer].points.pow(0.2).add(1.5)
+        effect() {let lol = player[this.layer].points.add(1).log3().add(1.5)
             if (hasUpgrade("hexzd", 22)) lol = lol.times(upgradeEffect(this.layer, 22))
                 return lol
         },
@@ -298,11 +307,13 @@ buyables: { // Thanks Epic Stat Battles :)
 		points: new Decimal (0),
         total: new Decimal (0),
     }},
+    onPrestige() {doReset ("hexzd", true)},
     color: "#005500",
     requires: new Decimal(10000000), // Can be a function that takes requirement increases into account
     resource: "ct episodes", // Name of prestige currency
     baseResource: "hexzd points", // Name of resource prestige is based on
-    exponent: 0.5,
+    base: 3,
+    exponent: 1.1,
     position: 2,
     effect() {
             return { // Formulas for any boosts inherent to resources in the layer. Can return a single value instead of an object if there is just one effect
