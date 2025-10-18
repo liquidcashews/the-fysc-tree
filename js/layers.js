@@ -61,7 +61,7 @@ addLayer("subs", {
             cost: new Decimal(10),
             unlocked() {return (hasUpgrade("subs", 11))},
             effect() {
-                let ret = player.subs.points.add(1).log(10).add(1).pow(1.3)
+                let ret = player.subs.points.add(1).log10().add(1).pow(1.3)
                     return ret;
             },
             effectDisplay() {
@@ -181,7 +181,7 @@ addLayer("hexzd", {
         cost: new Decimal (1),
         description: "Your FYSC is now inflated! Boost Subscribers and FP based on HEXZD points. (base 1.5x)",
         unlocked() {return (hasUpgrade("hexzd", 11))},
-        effect() {let lol = player[this.layer].points.add(1).log3().add(1.5)
+        effect() {let lol = player[this.layer].points.add(1).log10().times(new Decimal (10).log10().div(log10(3))).add(1.5)
             if (hasUpgrade("hexzd", 22)) lol = lol.times(upgradeEffect(this.layer, 22))
                 return lol
         },
