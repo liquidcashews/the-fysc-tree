@@ -57,11 +57,11 @@ addLayer("subs", {
         },
         12: {
             title: "Create a forum in the FYSC Discord",
-            description: "Boost Fysc Players based on subs. (log4(x))",
+            description: "Boost Fysc Players based on subs. (log(x)^1.3)",
             cost: new Decimal(10),
             unlocked() {return (hasUpgrade("subs", 11))},
             effect() {
-                let ret = player.subs.points.add(1).log(4).add(1)
+                let ret = player.subs.points.add(1).log(10).add(1).pow(1.3)
                     return ret;
             },
             effectDisplay() {
