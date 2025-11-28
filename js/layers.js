@@ -28,7 +28,7 @@ addLayer("subs", {
     gainExp()
     {
         exponent = new Decimal (1)
-        if (hasUpgrade("subs", 21)) exponent = exponent.times(1.25)
+        if (hasUpgrade("subs", 21)) exponent = exponent.times(1.2)
         return exponent
     },
     hotkeys: [
@@ -83,10 +83,10 @@ addLayer("subs", {
         },
         21: {
             title: "Master the power of Lcedit",
-            description: "Nice features, also you added fires! Raise Subscribers to the 1.15.",
+            description: "Nice features, also you added fires! Raise Subscribers to the 1.2.",
             cost: new Decimal (50),
             effect()
-            {return new Decimal (1.25)
+            {return new Decimal (1.2)
             },
             unlocked() {return (hasUpgrade("subs", 13))},
             effectDisplay () {return "^1.25"},
@@ -106,8 +106,8 @@ addLayer("subs", {
         23: {
             title: "Lcedit improvements",
             cost: new Decimal (350),
-            description: "Now you have a cool header on top, and you found out how to host the website code! Boost FYSC players by ^1.15.",
-            effect() {return new Decimal (1.15)
+            description: "Now you have a cool header on top, and you found out how to host the website code! Boost FYSC players by ^1.1.",
+            effect() {return new Decimal (1.1)
                 
             },
             unlocked() {return (hasUpgrade("subs", 22))},
@@ -116,8 +116,8 @@ addLayer("subs", {
         31: {
             title: "Data Saving",
             cost: new Decimal (1000),
-            description: "Last upgrade until next layer! 3x Subscribers.",
-            effect() {return new Decimal (5)
+            description: "Last upgrade until next layer! 4x Subscribers.",
+            effect() {return new Decimal (4)
                 
             },
             unlocked() {return (hasUpgrade("subs", 23))},
@@ -266,7 +266,7 @@ buyables: { // Thanks Epic Stat Battles :)
 
             // Effect of the buyable
             effect(x) {
-                let base = x.pow(0.9).times(0.03).add(1); // Original effect formula
+                let base = x.pow(0.67).times(0.03).add(1); // Original effect formula
                 return base
             },
             canAfford() { return player.hexzd.points.gte(this.cost()) },
@@ -297,7 +297,7 @@ buyables: { // Thanks Epic Stat Battles :)
         }, 
      }, )
      addLayer("ct", {
-    name: "Codename Trademark episodes", // This is optional, only used in a few places, If absent it just uses the layer id.
+    name: "Codename Trademark updates", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "CT", // This appears on the layer's node. Default is the id with the first letter capitalized
     row: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     branches: ["hexzd"],
@@ -306,6 +306,7 @@ buyables: { // Thanks Epic Stat Battles :)
         unlocked() {(hasChallenge("hexzd", 11))},
 		points: new Decimal (0),
         total: new Decimal (0),
+        episodes: new Decimal (0),
     }},
     onPrestige() {doReset ("hexzd", true)},
     color: "#005500",
@@ -317,7 +318,7 @@ buyables: { // Thanks Epic Stat Battles :)
     position: 2,
     effect() {
             return { // Formulas for any boosts inherent to resources in the layer. Can return a single value instead of an object if there is just one effect
-            ctrecovery: (new Decimal (1.25).pow(player.ct.points))
+            ctrecovery: (new Decimal (1.2).pow(player.ct.points))
         }},
         effectDescription() { // Optional text to describe the effects
             eff = this.effect()
