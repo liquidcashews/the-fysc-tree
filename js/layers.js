@@ -98,7 +98,7 @@ addLayer("subs", {
             unlocked() {return (hasUpgrade("subs", 21))},
             effect() {
                 let ret = player.subs.points.add(1).log10().add(1).pow(1.25)
-                if (hasUpgrade("hexzd", 21)) ret = ret.pow(1.5)
+                if (hasUpgrade("hexzd", 21)) ret = ret.pow(1.25)
                 return ret
             },
              effectDisplay () {return format (this.effect())+"x"},
@@ -137,7 +137,7 @@ addLayer("hexzd", {
     requires: new Decimal(4000), // Can be a function that takes requirement increases into account
     resource: "hexzd points", // Name of prestige currency
     baseResource: "subscribers", // Name of resource prestige is based on
-    exponent: 0.3,
+    exponent: 0.4,
     layerShown() {return hasUpgrade("subs", 31) || player.hexzd.total.gte(1)},
     branches: ["subs"],
     position: 0,
@@ -218,8 +218,8 @@ addLayer("hexzd", {
         cost: new Decimal (50),
         description: "Inflation is so bad it goes to other upgrades. Raise Subscriber Upgrade 22 to the 1.5.",
         unlocked() {return (hasUpgrade("hexzd", 15))},
-        effect() {return new Decimal (1.5)},
-        effectDisplay() {return "^1.5"},
+        effect() {return new Decimal (1.25)},
+        effectDisplay() {return "^1.25"},
         },
         22: {
         title: "Inflation Inflation???",
@@ -242,7 +242,7 @@ addLayer("hexzd", {
         title: "Ew, genericness",
         cost: new Decimal (2000),
         description: "Multiply HEXZD Points by Subscribers (thankfully logarithimically)",
-        effect() {return player.subs.points.add(1).log10().pow(1.15)},
+        effect() {return player.subs.points.add(1).log10().pow(1.15).add(1)},
         unlocked() {return (hasUpgrade("hexzd", 23))},
         effectDisplay() {return format(this.effect()) + "x"},
     },
@@ -253,7 +253,7 @@ addLayer("hexzd", {
         unlocked() {return (hasUpgrade("hexzd", 24))},
     },
 },
-buyables: { // Thanks Epic Stat Battles :)
+buyables: { // what
         11: {
             title: "Inflate the Inflate",
             description: "Inflate Inflation Inflation.",
