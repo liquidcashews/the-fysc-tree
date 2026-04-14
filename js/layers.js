@@ -157,6 +157,8 @@ addLayer("hexzd", {
         function() { return 'You have ' + format(player.hexzd.inflation) + ' hexzd inflation, boosting subs by ' + format(player.hexzd.inflation.pow(0.2))},
         ],
     "blank",
+	"byables",
+	"blank",
     "upgrades",
 ],
     baseAmount() {return player.subs.points }, // Get the current amount of baseResource
