@@ -149,6 +149,16 @@ addLayer("hexzd", {
                 body: "HEXZD is the first FYSC provider in this row. They're very known for inflating the sub count (Example: First place in Season 1 has 200B+ subs). This layer inflates the game by a noticable amount.",
             }
         },
+	tabFormat: [
+    "main-display",
+    ["prestige-button"],
+    "blank",
+    ["display-text",
+        function() { return 'You have ' + format(player.hexzd.inflation) + ' hexzd inflation, boosting subs by ' + format(player.hexzd.inflation.pow(0.2))},
+        ],
+    "blank",
+    "upgrades",
+],
     baseAmount() {return player.subs.points }, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -331,16 +341,7 @@ buyables: { // what
         mult = new Decimal(1)
         return mult
     },
-    tabFormat: [
-    "main-display",
-    ["prestige-button"],
-    "blank",
-    ["display-text",
-        function() { return 'You have ' + format(player.hexzd.inflation) + ' hexzd inflation, boosting subs by ' + format(player.hexzd.inflation.pow(0.2))},
-        ],
-    "blank",
-    "upgrades",
-],
+    
     gainExp()
     {
         exponent = new Decimal (1)
