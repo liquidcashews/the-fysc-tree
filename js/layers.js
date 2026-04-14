@@ -132,6 +132,7 @@ addLayer("hexzd", {
     startData() { return {
         unlocked() {hasUpgrade("subs", 23)},
 		points: new Decimal(0),
+        inflation: new Decimal(0),
     }},
     color: "#011F98",
     requires: new Decimal(4000), // Can be a function that takes requirement increases into account
@@ -171,7 +172,7 @@ addLayer("hexzd", {
     11: {
           title: "Make your layout custom made",
           cost: new Decimal (1),
-          description: "Bro Copilot shut the he- I mean boost fysc players by x3 because your layout looks better.",
+          description: "Boost fysc players by x3",
           unlocked: true,
           effect() {return new Decimal(3)},
           effectDisplay() {return "3x"},
@@ -289,10 +290,10 @@ buyables: { // what
         11: {
             name: "Procrastination",
             challengeDescription: "FP gain is square rooted due to the lack of updates.",
-            goalDescription: "Get 10 million FYSC players.",
+            goalDescription: "Get 10 million subscribers.",
             rewardDescription: "Unlock the second FYSC provider.",
             unlocked() { return (hasUpgrade("hexzd", 25)) },
-            canComplete() {return player.points.gte(1e7) },
+            canComplete() {return player.subs.gte(1e7) },
         }
         }, 
      }, )
@@ -352,6 +353,10 @@ buyables: { // what
         milestones: {
             0: {requirementDescription: "1st CT Episode",
                 done() {return player[this.layer].best.gte(1)}, // Used to determine when to give the milestone
-                effectDescription: "5x FP, 3x subs, and 2x HP",
-            }, }
+                effectDescription: "2x previous stats.",
+            },
+            1: {requirementDeacription: "3rd CT episode",
+                done() {return player[this.layer].best.gte(1)},
+                effectDescription: "Unlock HEXZD Inflation (currency). (WIP)"
+            } }
     } )      
