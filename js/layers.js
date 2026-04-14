@@ -331,6 +331,16 @@ buyables: { // what
         mult = new Decimal(1)
         return mult
     },
+    tabFormat: [
+    "main-display",
+    ["prestige-button"],
+    "blank",
+    ["display-text",
+        function() { return 'You have ' + format(player.hexzd.inflation) + ' hexzd inflation, boosting subs by ' + format(player.hexzd.inflation.pow(0.2))},
+        ],
+    "blank",
+    "upgrades",
+],
     gainExp()
     {
         exponent = new Decimal (1)
