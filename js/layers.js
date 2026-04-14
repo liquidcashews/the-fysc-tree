@@ -160,6 +160,8 @@ addLayer("hexzd", {
 	"byables",
 	"blank",
     "upgrades",
+	"blank",
+	"challenges",
 ],
     baseAmount() {return player.subs.points }, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -305,7 +307,7 @@ buyables: { // what
             goalDescription: "Get 10 million subscribers.",
             rewardDescription: "Unlock the second FYSC provider.",
             unlocked() { return (hasUpgrade("hexzd", 25)) },
-            canComplete() {return player.subs.gte(1e7) },
+            canComplete() {return player.subs.points.gte(1e7) },
         }
         }, 
      }, )
