@@ -51,7 +51,7 @@ function getPointGen() {
 	if (hasUpgrade("subs", 23)) gain = gain.pow(1.1)
 	if (hasMilestone("ct", 0)) gain = gain.times(5)
 	if (inChallenge("hexzd", 11)) gain = gain.pow(0.5)
-	gain = gain.times(new Decimal (1.25).pow(player.ct.points))
+	gain = gain.times(player.ct.effect.inflation)
 	return gain
 }
 

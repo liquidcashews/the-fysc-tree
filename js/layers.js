@@ -143,8 +143,8 @@ addLayer("hexzd", {
     layerShown() {return hasUpgrade("subs", 31) || player.hexzd.total.gte(1)},
     branches: ["subs"],
     position: 0,
-	effect() {return
-			 hexzdinflation: (new Decimal (player.hexzd.inflation.pow(0.2).add(1))) },
+	effect() {return {
+			 inflation: player.hexzd.inflation.pow(0.2).add(1)} },
     infoboxes:{
             m: {
                 title: "Context",
@@ -172,7 +172,7 @@ addLayer("hexzd", {
         let yum = new Decimal (1)
         if (hasUpgrade("hexzd", 15)) yum = yum.times(upgradeEffect("hexzd", 15))
         if (hasUpgrade("hexzd", 24)) yum = yum.times(upgradeEffect(this.layer, 24))
-        yum = yum.times(new Decimal (1.25).pow(player.ct.points))
+        yum = yum.times(player.ct.effect.ctrecovery)
         if (hasMilestone("ct", 0)) yum = yum.times(2)
         return yum
     },
