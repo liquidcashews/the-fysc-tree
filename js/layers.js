@@ -160,7 +160,7 @@ addLayer("hexzd", {
         function() { return 'You have ' + format(player.hexzd.inflation) + ' hexzd inflation, boosting subs by ' + format(player.hexzd.inflation.pow(0.2).add(1))},
         ],
     "blank",
-	"byables",
+	"buyables",
 	"blank",
     "upgrades",
 	"blank",
