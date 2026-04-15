@@ -22,8 +22,8 @@ addLayer("subs", {
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
         if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 14))
         if (hasMilestone("ct", 0)) mult = mult.times(3)
-		if (hasMilesfone("ct", 1)) mult = mult.times(player.hexzd.inflation.pow(0.2).add(1))
-        mult = mult.times(new Decimal (1.25).pow(player.ct.points))
+		if (hasMilesfone("ct", 1)) mult = mult.times(player.hexzd.effect.inflation)
+        mult = mult.times(player.ct.effect.ctrecovery)
         return mult
     },
     gainExp()
@@ -144,7 +144,7 @@ addLayer("hexzd", {
     branches: ["subs"],
     position: 0,
 	effect() {return
-			 hexzdinflation: (new Decimal player.hexzd.inflation.pow(0.2).add(1) },
+			 hexzdinflation: (new Decimal (player.hexzd.inflation.pow(0.2).add(1))) },
     infoboxes:{
             m: {
                 title: "Context",
