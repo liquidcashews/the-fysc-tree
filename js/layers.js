@@ -22,7 +22,7 @@ addLayer("subs", {
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
         if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 14))
         if (hasMilestone("ct", 0)) mult = mult.times(3)
-		if (hasMilesfone("ct", 1)) mult = mult.times(player.hexzd.effect.inflation)
+		if (hasMilestone("ct", 1)) mult = mult.times(player.hexzd.effect.inflation)
         mult = mult.times(player.ct.effect.ctrecovery)
         return mult
     },
