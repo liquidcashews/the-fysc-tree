@@ -22,8 +22,8 @@ addLayer("subs", {
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
         if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 14))
         if (hasMilestone("ct", 0)) mult = mult.times(3)
-		if (hasMilestone("ct", 1)) mult = mult.times(player.hexzd.effect.inflation)
-        mult = mult.times(ct.effect.ctrecovery)
+		if (hasMilestone("ct", 1)) mult = mult.times(tmp.hexzd.effect.inflation)
+        mult = mult.times(tmp.ct.effect.ctrecovery)
         return mult
     },
     gainExp()
@@ -172,7 +172,7 @@ addLayer("hexzd", {
         let yum = new Decimal (1)
         if (hasUpgrade("hexzd", 15)) yum = yum.times(upgradeEffect("hexzd", 15))
         if (hasUpgrade("hexzd", 24)) yum = yum.times(upgradeEffect(this.layer, 24))
-        yum = yum.times(ct.effect.ctrecovery)
+        yum = yum.times(tmp.ct.effect.ctrecovery)
         if (hasMilestone("ct", 0)) yum = yum.times(2)
         return yum
     },

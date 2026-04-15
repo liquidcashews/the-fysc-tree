@@ -51,7 +51,7 @@ function getPointGen() {
 	if (hasUpgrade("subs", 23)) gain = gain.pow(1.1)
 	if (hasMilestone("ct", 0)) gain = gain.times(5)
 	if (inChallenge("hexzd", 11)) gain = gain.pow(0.5)
-	gain = gain.times(ct.effect.ctrecovery)
+	gain = gain.times(tmp.ct.effect.ctrecovery)
 	return gain
 }
 
