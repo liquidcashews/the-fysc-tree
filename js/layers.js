@@ -334,8 +334,7 @@ buyables: { // what
     exponent: 1.1,
     position: 2,
     effect() {
-            return  // Formulas for any boosts inherent to resources in the layer. Can return a single value instead of an object if there is just one effect
-            (new Decimal (1.2).pow(player.ct.points))
+            return (new Decimal (1.2).pow(player.ct.points))
         },
         effectDescription() { // Optional text to describe the effects
             eff = this.effect()
@@ -347,7 +346,17 @@ buyables: { // what
         mult = new Decimal(1)
         return mult
     },
-    
+    tabFormat: [
+    "main-display",
+    "prestige-button",
+    "blank",
+    "blank",
+	"buyables",
+	"blank",
+    "upgrades",
+	"blank",
+	"challenges",
+],
     gainExp()
     {
         exponent = new Decimal (1)
