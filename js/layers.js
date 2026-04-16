@@ -383,8 +383,8 @@ buyables: { // what
                 done() {return player[this.layer].best.gte(1)}, // Used to determine when to give the milestone
                 effectDescription: "2x previous stats.",
             },
-            1: {requirementDeacription: "3rd CT episode",
-                done() {return player[this.layer].best.gte(1)},
-                effectDescription: "Unlock HEXZD Inflation (currency). (WIP)"
-            } }
+            1: {requirementDescription: "2nd CT episode",
+                done() {return player[this.layer].best.gte(2)},
+                effectDescription: "Unlock HEXZD Inflation."
+            }, }
     } )      
