@@ -338,7 +338,7 @@ buyables: { // what
         },
         effectDescription() { // Optional text to describe the effects
             eff = this.effect()
-            return "which are boosting previous currencies by "+format(eff.ctrecovery) + "x"
+            return "which are boosting previous currencies by "+format(eff) + "x"
         },
     baseAmount() {return player.hexzd.points; }, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -347,6 +347,7 @@ buyables: { // what
         return mult
     },
     tabFormat: [
+    "tabs",
     "main-display",
     "prestige-button",
     "blank",
