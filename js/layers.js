@@ -22,8 +22,8 @@ addLayer("subs", {
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
         if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 14))
         if (hasMilestone("ct", 0)) mult = mult.times(3)
-		if (hasMilestone("ct", 1)) mult = mult.times(tmp.hexzd.effect.inflation)
-        mult = mult.times(player[ct].effect.ctrecovery)
+		if (hasMilestone("ct", 1)) mult = mult.times(tmp[hexzd].effect)
+        mult = mult.times(tmp[ct].effect)
         return mult
     },
     gainExp()
@@ -143,8 +143,7 @@ addLayer("hexzd", {
     layerShown() {return hasUpgrade("subs", 31) || player.hexzd.total.gte(1)},
     branches: ["subs"],
     position: 0,
-	effect() {return {
-			 inflation: player.hexzd.inflation.pow(0.2).add(1)} },
+	effect() {return player.hexzd.inflation.pow(0.2).add(1) },
     infoboxes:{
             m: {
                 title: "Context",
@@ -172,7 +171,7 @@ addLayer("hexzd", {
         let yum = new Decimal (1)
         if (hasUpgrade("hexzd", 15)) yum = yum.times(upgradeEffect("hexzd", 15))
         if (hasUpgrade("hexzd", 24)) yum = yum.times(upgradeEffect(this.layer, 24))
-        yum = yum.times(tmp[ct].effect.ctrecovery)
+        yum = yum.times(ct.effect.ctrecovery)
         if (hasMilestone("ct", 0)) yum = yum.times(2)
         return yum
     },
@@ -335,9 +334,9 @@ buyables: { // what
     exponent: 1.1,
     position: 2,
     effect() {
-            return { // Formulas for any boosts inherent to resources in the layer. Can return a single value instead of an object if there is just one effect
-            ctrecovery: (new Decimal (1.2).pow(player.ct.points))
-        }},
+            return  // Formulas for any boosts inherent to resources in the layer. Can return a single value instead of an object if there is just one effect
+            (new Decimal (1.2).pow(player.ct.points))
+        },
         effectDescription() { // Optional text to describe the effects
             eff = this.effect()
             return "which are boosting previous currencies by "+format(eff.ctrecovery) + "x"
