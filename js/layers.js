@@ -350,6 +350,7 @@ buyables: { // what
     "main-display",
     "prestige-button",
     "blank",
+    "milestones",
     "blank",
 	"buyables",
 	"blank",
