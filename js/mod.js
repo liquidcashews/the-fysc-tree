@@ -50,8 +50,8 @@ function getPointGen() {
 	if (hasUpgrade("hexzd", 25)) gain = gain.times(4)
 	if (hasUpgrade("subs", 23)) gain = gain.pow(1.1)
 	if (hasMilestone("ct", 0)) gain = gain.times(5)
-	if (inChallenge("hexzd", 11)) gain = gain.pow(0.5)
 	gain = gain.times(new Decimal (1.2).pow(player.ct.points))
+    if (inChallenge("hexzd", 11)) gain = gain.pow(0.5)
 	return gain
 }
 
