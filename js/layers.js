@@ -22,7 +22,7 @@ addLayer("subs", {
         if (hasUpgrade("hexzd", 12)) mult = mult.times(upgradeEffect("hexzd", 12))
         if (hasUpgrade("hexzd", 14)) mult = mult.times(upgradeEffect("hexzd", 14))
         if (hasMilestone("ct", 0)) mult = mult.times(3)
-		if (hasMilestone("ct", 1)) mult = mult.times(player.hexzd.inflation.pow(0.2))
+		if (hasMilestone("ct", 1)) mult = mult.times(player.hexzd.inflation.pow(0.2).add(1))
         mult = mult.times(new Decimal (1.2).pow(player.ct.points))
         return mult
     },
@@ -174,6 +174,10 @@ addLayer("hexzd", {
         yum = yum.times(new Decimal (1.2).pow(player.ct.points))
         if (hasMilestone("ct", 0)) yum = yum.times(2)
         return yum
+    },
+    update() {
+     let infgain = new Decimal (1)
+     if (hasMilestone("ct", 1)) inflation = inflation.add(infgain)
     },
     gainExp()
     {
@@ -383,8 +387,8 @@ buyables: { // what
                 done() {return player[this.layer].best.gte(1)}, // Used to determine when to give the milestone
                 effectDescription: "2x previous stats.",
             },
-            1: {requirementDescription: "2nd CT episode",
-                done() {return player[this.layer].best.gte(2)},
+            1: {requirementDescription: "3rd CT episode",
+                done() {return player[this.layer].best.gte(3)},
                 effectDescription: "Unlock HEXZD Inflation."
             }, }
     } )      
