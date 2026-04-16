@@ -177,7 +177,7 @@ addLayer("hexzd", {
     },
     update() {
      let infgain = new Decimal (1)
-     if (hasMilestone("ct", 1)) player.hexzd.inflation = player.hexzd.inflation.add(infgain)
+     if (hasMilestone("ct", 1)) player.hexzd.inflation = player.hexzd.inflation.add(infgain.div(30))
     },
     gainExp()
     {
