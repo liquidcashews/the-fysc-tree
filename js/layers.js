@@ -244,7 +244,7 @@ addLayer("hexzd", {
         },
         22: {
         title: "Inflation Inflation???",
-        cost: new Decimal (200),
+        cost: new Decimal (100),
         description: "What is even happening? HP Upgrade 12 is now boosted based on Subscribers.",
         unlocked() {return (hasUpgrade("hexzd", 21))},
         effect() {let ret = player.subs.points.pow(0.065).add(1)
@@ -254,14 +254,14 @@ addLayer("hexzd", {
         effectDisplay() {return format(this.effect()) + "x"}, },
         23: {
         title: "Buyable Inflation????",
-        cost: new Decimal (500),
+        cost: new Decimal (300),
         description: "Unlock a buyable.",
         unlocked() {return (hasUpgrade("hexzd", 22))},
         effectDisplay: "finding new ways to put inflation",
     },
     24: {
         title: "Ew, genericness",
-        cost: new Decimal (2000),
+        cost: new Decimal (1000),
         description: "Multiply HEXZD Points by Subscribers (thankfully logarithimically)",
         effect() {return player.subs.points.add(1).log10().pow(1.15).add(1)},
         unlocked() {return (hasUpgrade("hexzd", 23))},
@@ -269,7 +269,7 @@ addLayer("hexzd", {
     },
     25: {
         title: "The Worst Thing of All",
-        cost: new Decimal (50000),
+        cost: new Decimal (10000),
         description: "x4 FP and unlock a challenge.",
         unlocked() {return (hasUpgrade("hexzd", 24))},
     },
