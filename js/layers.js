@@ -388,7 +388,7 @@ buyables: { // what
         milestones: {
             0: {requirementDescription: "1st CT Episode",
                 done() {return player[this.layer].best.gte(1)}, // Used to determine when to give the milestone
-                effectDescription: "2x previous stats.",
+                effectDescription: "2x previous stats, autobuy upgrades.",
             },
             1: {requirementDescription: "3rd CT episode",
                 done() {return player[this.layer].best.gte(3)},
