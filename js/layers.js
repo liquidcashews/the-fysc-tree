@@ -183,6 +183,9 @@ addLayer("hexzd", {
     {
         return new Decimal (1)
     },
+    automate() {
+        if (hasMilestone("ct", 0)) buyUpgrade("subs")
+    },
     hotkeys: [
         {key: "h", description: "h: Reset for hexzd points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
