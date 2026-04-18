@@ -7,6 +7,7 @@ addLayer("subs", {
 		points: new Decimal (0),
         total: new Decimal (0),
     }},
+    autoUpgrade() {return (hasMilestone("ct", 0))},
     color: "#FF0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "subscribers", // Name of prestige currency
@@ -182,9 +183,6 @@ addLayer("hexzd", {
     gainExp()
     {
         return new Decimal (1)
-    },
-    automate() {
-        if (hasMilestone("ct", 0)) buyUpgrade("subs")
     },
     hotkeys: [
         {key: "h", description: "h: Reset for hexzd points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},

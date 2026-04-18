@@ -14,13 +14,13 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.21b",
-	name: "rework time!",
+	num: "1.22",
+	name: "Quality of Inflation",
 }
 
 let changelog = `<h1>Changelog:</h1><br>,
-	<h3>v0.01</h3><br>
-	- Added a upgrades, one without an effect yet though.`
+	<h3>v0.01<h3><br>
+	- Idk anything about CSS so no changelog for you`
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
