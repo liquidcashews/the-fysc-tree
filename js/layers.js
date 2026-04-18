@@ -392,6 +392,7 @@ buyables: { // what
             },
             1: {requirementDescription: "3rd CT episode",
                 done() {return player[this.layer].best.gte(3)},
+                unlocked() { return (hasMilestone("ct", 0))},
                 effectDescription: "Unlock HEXZD Inflation."
             }, }
     } )      
