@@ -334,7 +334,7 @@ buyables: { // what
     }},
     onPrestige() {doReset ("hexzd", true)},
     color: "#005500",
-    requires: new Decimal(10000000), // Can be a function that takes requirement increases into account
+    requires: new Decimal(50000), // Can be a function that takes requirement increases into account
     resource: "ct episodes", // Name of prestige currency
     baseResource: "hexzd points", // Name of resource prestige is based on
     base: 3,
